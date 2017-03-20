@@ -47,6 +47,8 @@
             this.playerReferenceButton = new System.Windows.Forms.Button();
             this.autoPlayCheckBox = new System.Windows.Forms.CheckBox();
             this.initializeButton = new System.Windows.Forms.Button();
+            this.msdosCheckBox = new System.Windows.Forms.CheckBox();
+            this.msdosCaptionLabel = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.compileTabPage.SuspendLayout();
             this.mcGroupBox.SuspendLayout();
@@ -58,7 +60,7 @@
             // saveButton
             // 
             this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.saveButton.Location = new System.Drawing.Point(116, 207);
+            this.saveButton.Location = new System.Drawing.Point(116, 243);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 0;
@@ -69,7 +71,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(197, 207);
+            this.cancelButton.Location = new System.Drawing.Point(197, 243);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 1;
@@ -84,7 +86,7 @@
             this.tabControl.Location = new System.Drawing.Point(13, 13);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(259, 188);
+            this.tabControl.Size = new System.Drawing.Size(259, 223);
             this.tabControl.TabIndex = 2;
             // 
             // compileTabPage
@@ -94,7 +96,7 @@
             this.compileTabPage.Location = new System.Drawing.Point(4, 22);
             this.compileTabPage.Name = "compileTabPage";
             this.compileTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.compileTabPage.Size = new System.Drawing.Size(251, 162);
+            this.compileTabPage.Size = new System.Drawing.Size(251, 197);
             this.compileTabPage.TabIndex = 0;
             this.compileTabPage.Text = "コンパイル";
             this.compileTabPage.UseVisualStyleBackColor = true;
@@ -105,7 +107,7 @@
             this.mcGroupBox.Controls.Add(this.mcOptionTextBox);
             this.mcGroupBox.Controls.Add(this.mcOptionLabel);
             this.mcGroupBox.Controls.Add(this.mcReferenceButton);
-            this.mcGroupBox.Location = new System.Drawing.Point(6, 67);
+            this.mcGroupBox.Location = new System.Drawing.Point(6, 101);
             this.mcGroupBox.Name = "mcGroupBox";
             this.mcGroupBox.Size = new System.Drawing.Size(239, 91);
             this.mcGroupBox.TabIndex = 1;
@@ -148,18 +150,21 @@
             // 
             // msdosGroupBox
             // 
+            this.msdosGroupBox.Controls.Add(this.msdosCaptionLabel);
+            this.msdosGroupBox.Controls.Add(this.msdosCheckBox);
             this.msdosGroupBox.Controls.Add(this.msdosReferenceTextBox);
             this.msdosGroupBox.Controls.Add(this.msdosReferenceButton);
             this.msdosGroupBox.Location = new System.Drawing.Point(6, 6);
             this.msdosGroupBox.Name = "msdosGroupBox";
-            this.msdosGroupBox.Size = new System.Drawing.Size(239, 55);
+            this.msdosGroupBox.Size = new System.Drawing.Size(239, 89);
             this.msdosGroupBox.TabIndex = 0;
             this.msdosGroupBox.TabStop = false;
-            this.msdosGroupBox.Text = "MS-DOS Converter";
+            this.msdosGroupBox.Text = "MS-DOS Player";
             // 
             // msdosReferenceTextBox
             // 
-            this.msdosReferenceTextBox.Location = new System.Drawing.Point(6, 20);
+            this.msdosReferenceTextBox.Enabled = false;
+            this.msdosReferenceTextBox.Location = new System.Drawing.Point(6, 62);
             this.msdosReferenceTextBox.Name = "msdosReferenceTextBox";
             this.msdosReferenceTextBox.ReadOnly = true;
             this.msdosReferenceTextBox.Size = new System.Drawing.Size(191, 19);
@@ -167,7 +172,8 @@
             // 
             // msdosReferenceButton
             // 
-            this.msdosReferenceButton.Location = new System.Drawing.Point(203, 18);
+            this.msdosReferenceButton.Enabled = false;
+            this.msdosReferenceButton.Location = new System.Drawing.Point(203, 60);
             this.msdosReferenceButton.Name = "msdosReferenceButton";
             this.msdosReferenceButton.Size = new System.Drawing.Size(30, 23);
             this.msdosReferenceButton.TabIndex = 1;
@@ -181,7 +187,7 @@
             this.playTabPage.Location = new System.Drawing.Point(4, 22);
             this.playTabPage.Name = "playTabPage";
             this.playTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.playTabPage.Size = new System.Drawing.Size(251, 162);
+            this.playTabPage.Size = new System.Drawing.Size(251, 197);
             this.playTabPage.TabIndex = 1;
             this.playTabPage.Text = "演奏";
             this.playTabPage.UseVisualStyleBackColor = true;
@@ -194,23 +200,23 @@
             this.playEnableGroupBox.Controls.Add(this.autoPlayCheckBox);
             this.playEnableGroupBox.Location = new System.Drawing.Point(6, 6);
             this.playEnableGroupBox.Name = "playEnableGroupBox";
-            this.playEnableGroupBox.Size = new System.Drawing.Size(242, 95);
+            this.playEnableGroupBox.Size = new System.Drawing.Size(239, 89);
             this.playEnableGroupBox.TabIndex = 0;
             this.playEnableGroupBox.TabStop = false;
             this.playEnableGroupBox.Text = "自動演奏";
             // 
             // playerReferenceTextBox
             // 
-            this.playerReferenceTextBox.Location = new System.Drawing.Point(6, 68);
+            this.playerReferenceTextBox.Location = new System.Drawing.Point(6, 62);
             this.playerReferenceTextBox.Name = "playerReferenceTextBox";
             this.playerReferenceTextBox.ReadOnly = true;
-            this.playerReferenceTextBox.Size = new System.Drawing.Size(194, 19);
+            this.playerReferenceTextBox.Size = new System.Drawing.Size(191, 19);
             this.playerReferenceTextBox.TabIndex = 5;
             // 
             // playerCaptionLabel
             // 
             this.playerCaptionLabel.AutoSize = true;
-            this.playerCaptionLabel.Location = new System.Drawing.Point(9, 49);
+            this.playerCaptionLabel.Location = new System.Drawing.Point(6, 47);
             this.playerCaptionLabel.Name = "playerCaptionLabel";
             this.playerCaptionLabel.Size = new System.Drawing.Size(76, 12);
             this.playerCaptionLabel.TabIndex = 4;
@@ -218,7 +224,7 @@
             // 
             // playerReferenceButton
             // 
-            this.playerReferenceButton.Location = new System.Drawing.Point(206, 66);
+            this.playerReferenceButton.Location = new System.Drawing.Point(203, 60);
             this.playerReferenceButton.Name = "playerReferenceButton";
             this.playerReferenceButton.Size = new System.Drawing.Size(30, 23);
             this.playerReferenceButton.TabIndex = 3;
@@ -231,7 +237,7 @@
             this.autoPlayCheckBox.AutoSize = true;
             this.autoPlayCheckBox.Checked = true;
             this.autoPlayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoPlayCheckBox.Location = new System.Drawing.Point(7, 19);
+            this.autoPlayCheckBox.Location = new System.Drawing.Point(6, 18);
             this.autoPlayCheckBox.Name = "autoPlayCheckBox";
             this.autoPlayCheckBox.Size = new System.Drawing.Size(191, 16);
             this.autoPlayCheckBox.TabIndex = 0;
@@ -241,7 +247,7 @@
             // 
             // initializeButton
             // 
-            this.initializeButton.Location = new System.Drawing.Point(12, 207);
+            this.initializeButton.Location = new System.Drawing.Point(12, 243);
             this.initializeButton.Name = "initializeButton";
             this.initializeButton.Size = new System.Drawing.Size(75, 23);
             this.initializeButton.TabIndex = 3;
@@ -249,13 +255,34 @@
             this.initializeButton.UseVisualStyleBackColor = true;
             this.initializeButton.Click += new System.EventHandler(this.initializeButton_Click);
             // 
+            // msdosCheckBox
+            // 
+            this.msdosCheckBox.AutoSize = true;
+            this.msdosCheckBox.Location = new System.Drawing.Point(6, 18);
+            this.msdosCheckBox.Name = "msdosCheckBox";
+            this.msdosCheckBox.Size = new System.Drawing.Size(157, 16);
+            this.msdosCheckBox.TabIndex = 3;
+            this.msdosCheckBox.Text = "MS-DOS Playerを使用する";
+            this.msdosCheckBox.UseVisualStyleBackColor = true;
+            this.msdosCheckBox.CheckedChanged += new System.EventHandler(this.msdosCheckBox_CheckedChanged);
+            // 
+            // msdosCaptionLabel
+            // 
+            this.msdosCaptionLabel.AutoSize = true;
+            this.msdosCaptionLabel.Enabled = false;
+            this.msdosCaptionLabel.Location = new System.Drawing.Point(6, 47);
+            this.msdosCaptionLabel.Name = "msdosCaptionLabel";
+            this.msdosCaptionLabel.Size = new System.Drawing.Size(76, 12);
+            this.msdosCaptionLabel.TabIndex = 4;
+            this.msdosCaptionLabel.Text = "実行プログラム:";
+            // 
             // EnvironmentForm
             // 
             this.AcceptButton = this.saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(284, 242);
+            this.ClientSize = new System.Drawing.Size(284, 278);
             this.Controls.Add(this.initializeButton);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.cancelButton);
@@ -301,5 +328,7 @@
         private System.Windows.Forms.TextBox msdosReferenceTextBox;
         private System.Windows.Forms.TextBox mcReferenceTextBox;
         private System.Windows.Forms.TextBox playerReferenceTextBox;
+        private System.Windows.Forms.Label msdosCaptionLabel;
+        private System.Windows.Forms.CheckBox msdosCheckBox;
     }
 }

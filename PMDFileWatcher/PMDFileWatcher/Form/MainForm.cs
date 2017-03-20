@@ -85,11 +85,11 @@ namespace PMDFileWatcher.Form
             }
             else
             {
-                if (Properties.Settings.Default.MSDOSPath.Length == 0)
+                if (Properties.Settings.Default.MSDOSEnable == true && Properties.Settings.Default.MSDOSPath.Length == 0)
                 {
                     MessageBox.Show("MS-DOS Playerが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (File.Exists(Properties.Settings.Default.MSDOSPath) == false)
+                else if (Properties.Settings.Default.MSDOSEnable == true && File.Exists(Properties.Settings.Default.MSDOSPath) == false)
                 {
                     MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -169,7 +169,7 @@ namespace PMDFileWatcher.Form
             }
             prevChangeTime = curChangeTime;
 
-            if (File.Exists(Properties.Settings.Default.MSDOSPath) == false)
+            if (Properties.Settings.Default.MSDOSEnable == true && File.Exists(Properties.Settings.Default.MSDOSPath) == false)
             {
                 MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -180,19 +180,31 @@ namespace PMDFileWatcher.Form
                 return;
             }
 
-            string argument;
-            if (Properties.Settings.Default.MCOption.Length == 0)
+            compileProcess = new System.Diagnostics.Process();
+            if (Properties.Settings.Default.MSDOSEnable == true)
             {
-                argument = Properties.Settings.Default.MCPath + " " + Properties.Settings.Default.MMLPath;
+                compileProcess.StartInfo.FileName = Properties.Settings.Default.MSDOSPath;
+                if (Properties.Settings.Default.MCOption.Length == 0)
+                {
+                    compileProcess.StartInfo.Arguments = Properties.Settings.Default.MCPath + " " + Properties.Settings.Default.MMLPath;
+                }
+                else
+                {
+                    compileProcess.StartInfo.Arguments = Properties.Settings.Default.MCPath + " " + Properties.Settings.Default.MCOption + " " + Properties.Settings.Default.MMLPath;
+                }
             }
             else
             {
-                argument = Properties.Settings.Default.MCPath + " " + Properties.Settings.Default.MCOption + " " + Properties.Settings.Default.MMLPath;
+                compileProcess.StartInfo.FileName = Properties.Settings.Default.MCPath;
+                if (Properties.Settings.Default.MCOption.Length == 0)
+                {
+                    compileProcess.StartInfo.Arguments = Properties.Settings.Default.MMLPath;
+                }
+                else
+                {
+                    compileProcess.StartInfo.Arguments = Properties.Settings.Default.MCOption + " " + Properties.Settings.Default.MMLPath;
+                }
             }
-
-            compileProcess = new System.Diagnostics.Process();
-            compileProcess.StartInfo.FileName = Properties.Settings.Default.MSDOSPath;
-            compileProcess.StartInfo.Arguments = argument;
             compileProcess.StartInfo.WorkingDirectory = Path.GetDirectoryName(Properties.Settings.Default.MMLPath);
             compileProcess.StartInfo.CreateNoWindow = true;
             compileProcess.StartInfo.UseShellExecute = false;

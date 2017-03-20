@@ -28,11 +28,30 @@ namespace PMDFileWatcher.Form
 
         private void EnvironmentForm_Load(object sender, EventArgs e)
         {
+            msdosCheckBox.Checked = Properties.Settings.Default.MSDOSEnable;
             msdosReferenceTextBox.Text = Properties.Settings.Default.MSDOSPath;
             mcReferenceTextBox.Text = Properties.Settings.Default.MCPath;
             mcOptionTextBox.Text = Properties.Settings.Default.MCOption;
             autoPlayCheckBox.Checked = Properties.Settings.Default.AutoPlay;
             playerReferenceTextBox.Text = Properties.Settings.Default.PlayerPath;
+        }
+
+        private void msdosCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            if (cb.Checked == true)
+            {
+                msdosCaptionLabel.Enabled = true;
+                msdosReferenceTextBox.Enabled = true;
+                msdosReferenceButton.Enabled = true;
+            }
+            else if (cb.Checked == false)
+            {
+                msdosCaptionLabel.Enabled = false;
+                msdosReferenceTextBox.Enabled = false;
+                msdosReferenceButton.Enabled = false;
+            }
+            Properties.Settings.Default.MSDOSEnable = cb.Checked;
         }
 
         private void msdosReferenceButton_Click(object sender, EventArgs e)
