@@ -94,5 +94,17 @@ namespace PMDFileWatcher.Properties {
                 this["PlayerPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MSDOSEnable {
+            get {
+                return ((bool)(this["MSDOSEnable"]));
+            }
+            set {
+                this["MSDOSEnable"] = value;
+            }
+        }
     }
 }
