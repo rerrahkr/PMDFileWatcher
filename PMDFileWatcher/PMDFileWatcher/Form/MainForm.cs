@@ -272,14 +272,13 @@ namespace PMDFileWatcher.Form
                                 return;
                             }
 
-                            string compiledFileName = CompiledFile.getFileName(Properties.Settings.Default.MMLPath);
                             try
                             {
                                 playProcess?.Close();
 
                                 playProcess = new System.Diagnostics.Process();
                                 playProcess.StartInfo.FileName = Properties.Settings.Default.PlayerPath;
-                                playProcess.StartInfo.Arguments = Path.Combine(Path.GetDirectoryName(Properties.Settings.Default.MMLPath), compiledFileName);
+                                playProcess.StartInfo.Arguments = Path.Combine(Path.GetDirectoryName(Properties.Settings.Default.MMLPath), CompiledFile.getFileName(Properties.Settings.Default.MMLPath));
                                 playProcess.StartInfo.WorkingDirectory = Path.GetDirectoryName(Properties.Settings.Default.MMLPath);
 
                                 playProcess.Start();

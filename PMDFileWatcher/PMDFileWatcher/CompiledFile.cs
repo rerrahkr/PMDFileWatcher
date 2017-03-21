@@ -39,7 +39,7 @@ namespace PMDFileWatcher
             }
             catch
             {
-                return null;
+                throw;
             }
         }
     }
