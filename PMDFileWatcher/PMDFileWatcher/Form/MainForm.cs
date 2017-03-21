@@ -215,11 +215,18 @@ namespace PMDFileWatcher.Form
             try
             {
                 compileProcess.Start();
-                compileProcess.BeginOutputReadLine();
+                try
+                {
+                    compileProcess.BeginOutputReadLine();
+                }
+                catch
+                {
+                    compileProcess.Kill();
+                    throw;
+                }
             }
             catch
             {
-                compileProcess.Kill();
                 compileProcess.Close();
                 compileProcess = null;
                 compileResultTextList = null;
