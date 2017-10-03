@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EnvironmentForm));
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -38,6 +39,8 @@
             this.mcOptionLabel = new System.Windows.Forms.Label();
             this.mcReferenceButton = new System.Windows.Forms.Button();
             this.msdosGroupBox = new System.Windows.Forms.GroupBox();
+            this.msdosCaptionLabel = new System.Windows.Forms.Label();
+            this.msdosCheckBox = new System.Windows.Forms.CheckBox();
             this.msdosReferenceTextBox = new System.Windows.Forms.TextBox();
             this.msdosReferenceButton = new System.Windows.Forms.Button();
             this.playTabPage = new System.Windows.Forms.TabPage();
@@ -47,8 +50,6 @@
             this.playerReferenceButton = new System.Windows.Forms.Button();
             this.autoPlayCheckBox = new System.Windows.Forms.CheckBox();
             this.initializeButton = new System.Windows.Forms.Button();
-            this.msdosCheckBox = new System.Windows.Forms.CheckBox();
-            this.msdosCaptionLabel = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.compileTabPage.SuspendLayout();
             this.mcGroupBox.SuspendLayout();
@@ -161,6 +162,27 @@
             this.msdosGroupBox.TabStop = false;
             this.msdosGroupBox.Text = "MS-DOS Player";
             // 
+            // msdosCaptionLabel
+            // 
+            this.msdosCaptionLabel.AutoSize = true;
+            this.msdosCaptionLabel.Enabled = false;
+            this.msdosCaptionLabel.Location = new System.Drawing.Point(6, 47);
+            this.msdosCaptionLabel.Name = "msdosCaptionLabel";
+            this.msdosCaptionLabel.Size = new System.Drawing.Size(76, 12);
+            this.msdosCaptionLabel.TabIndex = 4;
+            this.msdosCaptionLabel.Text = "実行プログラム:";
+            // 
+            // msdosCheckBox
+            // 
+            this.msdosCheckBox.AutoSize = true;
+            this.msdosCheckBox.Location = new System.Drawing.Point(6, 18);
+            this.msdosCheckBox.Name = "msdosCheckBox";
+            this.msdosCheckBox.Size = new System.Drawing.Size(157, 16);
+            this.msdosCheckBox.TabIndex = 3;
+            this.msdosCheckBox.Text = "MS-DOS Playerを使用する";
+            this.msdosCheckBox.UseVisualStyleBackColor = true;
+            this.msdosCheckBox.CheckedChanged += new System.EventHandler(this.msdosCheckBox_CheckedChanged);
+            // 
             // msdosReferenceTextBox
             // 
             this.msdosReferenceTextBox.Enabled = false;
@@ -255,27 +277,6 @@
             this.initializeButton.UseVisualStyleBackColor = true;
             this.initializeButton.Click += new System.EventHandler(this.initializeButton_Click);
             // 
-            // msdosCheckBox
-            // 
-            this.msdosCheckBox.AutoSize = true;
-            this.msdosCheckBox.Location = new System.Drawing.Point(6, 18);
-            this.msdosCheckBox.Name = "msdosCheckBox";
-            this.msdosCheckBox.Size = new System.Drawing.Size(157, 16);
-            this.msdosCheckBox.TabIndex = 3;
-            this.msdosCheckBox.Text = "MS-DOS Playerを使用する";
-            this.msdosCheckBox.UseVisualStyleBackColor = true;
-            this.msdosCheckBox.CheckedChanged += new System.EventHandler(this.msdosCheckBox_CheckedChanged);
-            // 
-            // msdosCaptionLabel
-            // 
-            this.msdosCaptionLabel.AutoSize = true;
-            this.msdosCaptionLabel.Enabled = false;
-            this.msdosCaptionLabel.Location = new System.Drawing.Point(6, 47);
-            this.msdosCaptionLabel.Name = "msdosCaptionLabel";
-            this.msdosCaptionLabel.Size = new System.Drawing.Size(76, 12);
-            this.msdosCaptionLabel.TabIndex = 4;
-            this.msdosCaptionLabel.Text = "実行プログラム:";
-            // 
             // EnvironmentForm
             // 
             this.AcceptButton = this.saveButton;
@@ -288,6 +289,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EnvironmentForm";

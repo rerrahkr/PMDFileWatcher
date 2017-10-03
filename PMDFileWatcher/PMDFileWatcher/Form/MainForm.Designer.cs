@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.environmentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +69,7 @@
             this.fileSeparateMenuItem,
             this.endMenuItem});
             this.fileMenuItem.Name = "fileMenuItem";
-            this.fileMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.fileMenuItem.Size = new System.Drawing.Size(67, 20);
             this.fileMenuItem.Text = "ファイル(&F)";
             // 
             // environmentMenuItem
@@ -181,6 +182,7 @@
             // 
             // fileSystemWatcher
             // 
+            this.fileSystemWatcher.EnableRaisingEvents = true;
             this.fileSystemWatcher.NotifyFilter = System.IO.NotifyFilters.LastWrite;
             this.fileSystemWatcher.SynchronizingObject = this;
             this.fileSystemWatcher.Changed += new System.IO.FileSystemEventHandler(this.fileSystemWatcher_Changed);
@@ -195,6 +197,7 @@
             this.Controls.Add(this.MMLGroupBox);
             this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.Name = "MainForm";
