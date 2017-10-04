@@ -295,7 +295,6 @@
             this.Name = "EnvironmentForm";
             this.ShowInTaskbar = false;
             this.Text = "環境設定";
-            this.Load += new System.EventHandler(this.EnvironmentForm_Load);
             this.tabControl.ResumeLayout(false);
             this.compileTabPage.ResumeLayout(false);
             this.mcGroupBox.ResumeLayout(false);

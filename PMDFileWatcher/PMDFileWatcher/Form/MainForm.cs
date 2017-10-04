@@ -23,12 +23,16 @@ namespace PMDFileWatcher.Form
 
         List<string> compileResultTextList;
 
+        private Settings settings;
+
         public MainForm()
         {
             InitializeComponent();
 
-            ef = new EnvironmentForm();
-            ef.LoadedSettings += new EventHandler(MainForm_Load);
+            settings = Settings.Load();
+
+            ef = new EnvironmentForm(settings);
+            ef.InitializeButtonClick += new InitializeButtonClickEventHandler(EnvironmentForm_InitializeButtonClick);
             crf = null;
 
             prevChangeTime = DateTime.Now;
@@ -37,10 +41,25 @@ namespace PMDFileWatcher.Form
             playProcess = null;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            referenceTextBox.Text = Properties.Settings.Default.MMLPath;
+            base.OnLoad(e);
+
+            referenceTextBox.Text = settings.MMLPath;
             referenceTextBox.SelectionStart = referenceTextBox.Text.Length;
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+
+            settings.Save();
+        }
+
+        private void EnvironmentForm_InitializeButtonClick(object sender, InitializeButtonClickEventArgs e)
+        {
+            settings = e.Settings;
+            OnLoad(EventArgs.Empty);
         }
 
         private void environmentMenuItem_Click(object sender, EventArgs e)
@@ -68,48 +87,48 @@ namespace PMDFileWatcher.Form
             {
                 referenceTextBox.Text = ofd.FileName;
                 referenceTextBox.SelectionStart = ofd.FileName.Length;
-                Properties.Settings.Default.MMLPath = ofd.FileName;
-                Properties.Settings.Default.Save();
+                settings.MMLPath = ofd.FileName;
+                settings.Save();
             }
         }
 
         private void watchStartButton_Click(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.MMLPath.Length == 0)
+            if (settings.MMLPath.Length == 0)
             {
                 MessageBox.Show("監視するMMLが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (File.Exists(Properties.Settings.Default.MMLPath) == false)
+            else if (File.Exists(settings.MMLPath) == false)
             {
                 MessageBox.Show("指定したMMLは存在しません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (Properties.Settings.Default.MSDOSEnable == true && Properties.Settings.Default.MSDOSPath.Length == 0)
+                if (settings.MSDOSEnable == true && settings.MSDOSPath.Length == 0)
                 {
                     MessageBox.Show("MS-DOS Playerが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (Properties.Settings.Default.MSDOSEnable == true && File.Exists(Properties.Settings.Default.MSDOSPath) == false)
+                else if (settings.MSDOSEnable == true && File.Exists(settings.MSDOSPath) == false)
                 {
                     MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    if (Properties.Settings.Default.MCPath.Length == 0)
+                    if (settings.MCPath.Length == 0)
                     {
                         MessageBox.Show("MCが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (File.Exists(Properties.Settings.Default.MCPath) == false)
+                    else if (File.Exists(settings.MCPath) == false)
                     {
                         MessageBox.Show("指定先にMCコンバータは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        if (Properties.Settings.Default.AutoPlay == true && Properties.Settings.Default.PlayerPath.Length == 0)
+                        if (settings.AutoPlay == true && settings.PlayerPath.Length == 0)
                         {
                             MessageBox.Show("プレーヤが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else if (Properties.Settings.Default.AutoPlay == true && File.Exists(Properties.Settings.Default.PlayerPath) == false)
+                        else if (settings.AutoPlay == true && File.Exists(settings.PlayerPath) == false)
                         {
                             MessageBox.Show("指定先にプレーヤは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -117,8 +136,8 @@ namespace PMDFileWatcher.Form
                         {
                             try
                             {
-                                fileSystemWatcher.Path = Path.GetDirectoryName(Properties.Settings.Default.MMLPath);
-                                fileSystemWatcher.Filter = Path.GetFileName(Properties.Settings.Default.MMLPath);
+                                fileSystemWatcher.Path = Path.GetDirectoryName(settings.MMLPath);
+                                fileSystemWatcher.Filter = Path.GetFileName(settings.MMLPath);
                                 fileSystemWatcher.EnableRaisingEvents = true;
 
                                 watchStartButton.Enabled = false;
@@ -169,43 +188,43 @@ namespace PMDFileWatcher.Form
             }
             prevChangeTime = curChangeTime;
 
-            if (Properties.Settings.Default.MSDOSEnable == true && File.Exists(Properties.Settings.Default.MSDOSPath) == false)
+            if (settings.MSDOSEnable == true && File.Exists(settings.MSDOSPath) == false)
             {
                 MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (File.Exists(Properties.Settings.Default.MCPath) == false)
+            else if (File.Exists(settings.MCPath) == false)
             {
                 MessageBox.Show("指定先にMCは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             compileProcess = new System.Diagnostics.Process();
-            if (Properties.Settings.Default.MSDOSEnable == true)
+            if (settings.MSDOSEnable == true)
             {
-                compileProcess.StartInfo.FileName = Properties.Settings.Default.MSDOSPath;
-                if (Properties.Settings.Default.MCOption.Length == 0)
+                compileProcess.StartInfo.FileName = settings.MSDOSPath;
+                if (settings.MCOption.Length == 0)
                 {
-                    compileProcess.StartInfo.Arguments = Properties.Settings.Default.MCPath + " " + Properties.Settings.Default.MMLPath;
+                    compileProcess.StartInfo.Arguments = settings.MCPath + " " + settings.MMLPath;
                 }
                 else
                 {
-                    compileProcess.StartInfo.Arguments = Properties.Settings.Default.MCPath + " " + Properties.Settings.Default.MCOption + " " + Properties.Settings.Default.MMLPath;
+                    compileProcess.StartInfo.Arguments = settings.MCPath + " " + settings.MCOption + " " + settings.MMLPath;
                 }
             }
             else
             {
-                compileProcess.StartInfo.FileName = Properties.Settings.Default.MCPath;
-                if (Properties.Settings.Default.MCOption.Length == 0)
+                compileProcess.StartInfo.FileName = settings.MCPath;
+                if (settings.MCOption.Length == 0)
                 {
-                    compileProcess.StartInfo.Arguments = Properties.Settings.Default.MMLPath;
+                    compileProcess.StartInfo.Arguments = settings.MMLPath;
                 }
                 else
                 {
-                    compileProcess.StartInfo.Arguments = Properties.Settings.Default.MCOption + " " + Properties.Settings.Default.MMLPath;
+                    compileProcess.StartInfo.Arguments = settings.MCOption + " " + settings.MMLPath;
                 }
             }
-            compileProcess.StartInfo.WorkingDirectory = Path.GetDirectoryName(Properties.Settings.Default.MMLPath);
+            compileProcess.StartInfo.WorkingDirectory = Path.GetDirectoryName(settings.MMLPath);
             compileProcess.StartInfo.CreateNoWindow = true;
             compileProcess.StartInfo.UseShellExecute = false;
             compileProcess.StartInfo.RedirectStandardOutput = true;
@@ -264,9 +283,9 @@ namespace PMDFileWatcher.Form
                             crf.SetResult(cr);
                         }
 
-                        if (cr.Success == true && Properties.Settings.Default.AutoPlay == true)
+                        if (cr.Success == true && settings.AutoPlay == true)
                         {
-                            if (File.Exists(Properties.Settings.Default.PlayerPath) == false)
+                            if (File.Exists(settings.PlayerPath) == false)
                             {
                                 MessageBox.Show("指定先にプレーヤは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -277,9 +296,9 @@ namespace PMDFileWatcher.Form
                                 playProcess?.Close();
 
                                 playProcess = new System.Diagnostics.Process();
-                                playProcess.StartInfo.FileName = Properties.Settings.Default.PlayerPath;
-                                playProcess.StartInfo.Arguments = Path.Combine(Path.GetDirectoryName(Properties.Settings.Default.MMLPath), CompiledFile.getFileName(Properties.Settings.Default.MMLPath));
-                                playProcess.StartInfo.WorkingDirectory = Path.GetDirectoryName(Properties.Settings.Default.MMLPath);
+                                playProcess.StartInfo.FileName = settings.PlayerPath;
+                                playProcess.StartInfo.Arguments = Path.Combine(Path.GetDirectoryName(settings.MMLPath), CompiledFile.getFileName(settings.MMLPath));
+                                playProcess.StartInfo.WorkingDirectory = Path.GetDirectoryName(settings.MMLPath);
 
                                 playProcess.Start();
                             }

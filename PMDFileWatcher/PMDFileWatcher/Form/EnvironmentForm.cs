@@ -12,28 +12,34 @@ namespace PMDFileWatcher.Form
 {
     public partial class EnvironmentForm : System.Windows.Forms.Form
     {
-        public event EventHandler LoadedSettings;
+        public event InitializeButtonClickEventHandler InitializeButtonClick;
 
-        public void LoadSettings()
-        {
-            LoadedSettings?.Invoke(this, EventArgs.Empty);
-        }
+        private Settings settings;
 
-        public EnvironmentForm()
+        public EnvironmentForm(Settings settings)
         {
             InitializeComponent();
 
-            LoadedSettings += new EventHandler(EnvironmentForm_Load);
+            this.settings = settings;
         }
 
-        private void EnvironmentForm_Load(object sender, EventArgs e)
+        public void OnInitializeButtonClick(Settings settings)
         {
-            msdosCheckBox.Checked = Properties.Settings.Default.MSDOSEnable;
-            msdosReferenceTextBox.Text = Properties.Settings.Default.MSDOSPath;
-            mcReferenceTextBox.Text = Properties.Settings.Default.MCPath;
-            mcOptionTextBox.Text = Properties.Settings.Default.MCOption;
-            autoPlayCheckBox.Checked = Properties.Settings.Default.AutoPlay;
-            playerReferenceTextBox.Text = Properties.Settings.Default.PlayerPath;
+            var args = new InitializeButtonClickEventArgs();
+            args.Settings = settings;
+            InitializeButtonClick?.Invoke(this, args);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            msdosCheckBox.Checked = settings.MSDOSEnable;
+            msdosReferenceTextBox.Text = settings.MSDOSPath;
+            mcReferenceTextBox.Text = settings.MCPath;
+            mcOptionTextBox.Text = settings.MCOption;
+            autoPlayCheckBox.Checked = settings.AutoPlay;
+            playerReferenceTextBox.Text = settings.PlayerPath;
         }
 
         private void msdosCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -51,7 +57,6 @@ namespace PMDFileWatcher.Form
                 msdosReferenceTextBox.Enabled = false;
                 msdosReferenceButton.Enabled = false;
             }
-            Properties.Settings.Default.MSDOSEnable = cb.Checked;
         }
 
         private void msdosReferenceButton_Click(object sender, EventArgs e)
@@ -61,7 +66,6 @@ namespace PMDFileWatcher.Form
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 msdosReferenceTextBox.Text = ofd.FileName;
-                Properties.Settings.Default.MSDOSPath = ofd.FileName;
             }
         }
 
@@ -72,7 +76,6 @@ namespace PMDFileWatcher.Form
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 mcReferenceTextBox.Text = ofd.FileName;
-                Properties.Settings.Default.MCPath = ofd.FileName;
             }
         }
 
@@ -91,7 +94,6 @@ namespace PMDFileWatcher.Form
                 playerReferenceTextBox.Enabled = false;
                 playerReferenceButton.Enabled = false;
             }
-            Properties.Settings.Default.AutoPlay = cb.Checked;
         }
 
         private void playerReferenceButton_Click(object sender, EventArgs e)
@@ -101,27 +103,38 @@ namespace PMDFileWatcher.Form
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 playerReferenceTextBox.Text = ofd.FileName;
-                Properties.Settings.Default.PlayerPath = ofd.FileName;
             }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.MCOption = mcOptionTextBox.Text;
-            Properties.Settings.Default.Save();
+            settings.MSDOSEnable = msdosCheckBox.Checked;
+            settings.MSDOSPath = msdosReferenceTextBox.Text;
+            settings.MCPath = mcReferenceTextBox.Text;
+            settings.MCOption = mcOptionTextBox.Text;
+            settings.AutoPlay = autoPlayCheckBox.Checked;
+            settings.PlayerPath = playerReferenceTextBox.Text;
+
             Close();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Reload();
             Close();
         }
 
         private void initializeButton_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Reset();
-            LoadSettings();
+            settings = new Settings();
+            OnLoad(EventArgs.Empty);
+            OnInitializeButtonClick(settings);
         }
     }
+
+    public class InitializeButtonClickEventArgs : EventArgs
+    {
+        public Settings Settings { get; set; }
+    }
+
+    public delegate void InitializeButtonClickEventHandler(object sender, InitializeButtonClickEventArgs e);
 }
