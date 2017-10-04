@@ -32,12 +32,14 @@
             this.applicationNameLabel = new System.Windows.Forms.Label();
             this.versionLabel = new System.Windows.Forms.Label();
             this.copyrightLabel = new System.Windows.Forms.Label();
+            this.iconPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // okButton
             // 
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(105, 119);
+            this.okButton.Location = new System.Drawing.Point(80, 96);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 0;
@@ -47,37 +49,46 @@
             // 
             // applicationNameLabel
             // 
-            this.applicationNameLabel.Location = new System.Drawing.Point(12, 27);
+            this.applicationNameLabel.Location = new System.Drawing.Point(62, 17);
             this.applicationNameLabel.Name = "applicationNameLabel";
-            this.applicationNameLabel.Size = new System.Drawing.Size(260, 12);
+            this.applicationNameLabel.Size = new System.Drawing.Size(160, 12);
             this.applicationNameLabel.TabIndex = 1;
             this.applicationNameLabel.Text = "ApplicationName";
             this.applicationNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // versionLabel
             // 
-            this.versionLabel.Location = new System.Drawing.Point(12, 52);
+            this.versionLabel.Location = new System.Drawing.Point(58, 42);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(260, 12);
+            this.versionLabel.Size = new System.Drawing.Size(164, 12);
             this.versionLabel.TabIndex = 2;
             this.versionLabel.Text = "Version";
             this.versionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // copyrightLabel
             // 
-            this.copyrightLabel.Location = new System.Drawing.Point(12, 77);
+            this.copyrightLabel.Location = new System.Drawing.Point(60, 67);
             this.copyrightLabel.Name = "copyrightLabel";
-            this.copyrightLabel.Size = new System.Drawing.Size(260, 12);
+            this.copyrightLabel.Size = new System.Drawing.Size(162, 12);
             this.copyrightLabel.TabIndex = 3;
             this.copyrightLabel.Text = "Copyright";
             this.copyrightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // iconPictureBox
+            // 
+            this.iconPictureBox.Location = new System.Drawing.Point(20, 33);
+            this.iconPictureBox.Name = "iconPictureBox";
+            this.iconPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.iconPictureBox.TabIndex = 4;
+            this.iconPictureBox.TabStop = false;
             // 
             // VersionForm
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 154);
+            this.ClientSize = new System.Drawing.Size(234, 131);
+            this.Controls.Add(this.iconPictureBox);
             this.Controls.Add(this.copyrightLabel);
             this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.applicationNameLabel);
@@ -88,6 +99,7 @@
             this.Name = "VersionForm";
             this.ShowInTaskbar = false;
             this.Text = "バージョン情報";
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -98,5 +110,6 @@
         private System.Windows.Forms.Label applicationNameLabel;
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Label copyrightLabel;
+        private System.Windows.Forms.PictureBox iconPictureBox;
     }
 }
