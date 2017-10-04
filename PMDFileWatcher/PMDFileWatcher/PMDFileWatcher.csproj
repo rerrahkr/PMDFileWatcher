@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common.cs" />
     <Compile Include="CompiledFile.cs" />
     <Compile Include="CompileResult.cs" />
     <Compile Include="Form\CompileResultForm.cs">
@@ -95,6 +96,7 @@
     <Compile Include="Form\VersionForm.Designer.cs">
       <DependentUpon>VersionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Form\CompileResultForm.resx">
       <DependentUpon>CompileResultForm.cs</DependentUpon>
     </EmbeddedResource>

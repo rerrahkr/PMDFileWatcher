@@ -15,18 +15,16 @@ namespace PMDFileWatcher.Form
         public VersionForm()
         {
             InitializeComponent();
-            applicationNameLabel.Text = Application.ProductName;
-            versionLabel.Text = "Version " + Application.ProductVersion;
-            System.Reflection.AssemblyCopyrightAttribute aca =
-                (System.Reflection.AssemblyCopyrightAttribute)
-                Attribute.GetCustomAttribute(
-                    System.Reflection.Assembly.GetExecutingAssembly(),
-                    typeof(System.Reflection.AssemblyCopyrightAttribute));
-            copyrightLabel.Text = aca.Copyright;
-            string path = System.Reflection.Assembly.GetEntryAssembly().Location;
-            iconPictureBox.Image = Icon.ExtractAssociatedIcon(path).ToBitmap();
+        }
 
-            // TODO: 設定保存場所変更
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            applicationNameLabel.Text = Common.AssemblyTitle;
+            versionLabel.Text = "Version " + Common.AssemblyFileVersion;
+            copyrightLabel.Text = Common.AssemblyCopyright;
+            iconPictureBox.Image = Common.Icon.ToBitmap();
         }
 
         private void okButton_Click(object sender, EventArgs e)

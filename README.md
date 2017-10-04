@@ -1,6 +1,6 @@
 # PMDFileWatcher
 PMDMML監視ツール  
-Copyright (C) 2017 R.K.R.
+Copyright (C) 2017 Rerrah
 
 ## 概要
 PMDFileWatcherはPMD用MMLの更新を監視し、自動でMMLコンパイラを実行してFMPMDなどのプレーヤに再生させるソフトです。  
@@ -33,5 +33,5 @@ PMDFileWatcher.exeをダブルクリックしてください。
 インストールしたフォルダを削除してください。
 
 ## 著作権 / ライセンス
-本ソフトの著作権はR.K.R.が所有します。  
+本ソフトの著作権はRerrahが所有します。  
 本ソフトのライセンスはMIT Licenseです。
