@@ -45,8 +45,42 @@ namespace PMDFileWatcher.Form
         {
             base.OnLoad(e);
 
+            string[] files = Environment.GetCommandLineArgs();
+            if (files.Length == 2 && File.Exists(files[1]))
+            {
+                SetTargetFile(files[1]);
+            }
             referenceTextBox.Text = settings.MMLPath;
             referenceTextBox.SelectionStart = referenceTextBox.Text.Length;
+        }
+
+        protected override void OnDragEnter(DragEventArgs drgevent)
+        {
+            base.OnDragEnter(drgevent);
+
+            string[] files = (string[])drgevent.Data.GetData(DataFormats.FileDrop, false);
+            if (watchStartButton.Enabled && drgevent.Data.GetDataPresent(DataFormats.FileDrop) && files.Length == 1)
+            {
+                drgevent.Effect = DragDropEffects.All;
+                return;
+            }
+            drgevent.Effect = DragDropEffects.None;
+        }
+
+        protected override void OnDragDrop(DragEventArgs drgevent)
+        {
+            base.OnDragDrop(drgevent);
+
+            try
+            {
+                var fileNameArray = (string[])drgevent.Data.GetData(DataFormats.FileDrop, false);
+                Console.WriteLine(fileNameArray[0]);
+                SetTargetFile(fileNameArray[0]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -85,11 +119,16 @@ namespace PMDFileWatcher.Form
             ofd.Filter = "MML File (*.mml)|*.mml|All File (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                referenceTextBox.Text = ofd.FileName;
-                referenceTextBox.SelectionStart = ofd.FileName.Length;
-                settings.MMLPath = ofd.FileName;
-                settings.Save();
+                SetTargetFile(ofd.FileName);
             }
+        }
+
+        private void SetTargetFile(string path)
+        {
+            referenceTextBox.Text = path;
+            referenceTextBox.SelectionStart = path.Length;
+            settings.MMLPath = path;
+            settings.Save();
         }
 
         private void watchStartButton_Click(object sender, EventArgs e)

@@ -19,7 +19,7 @@ MMLが更新されたとき、環境設定で指定されたMS-DOS Player(任意
 自動再生を行う場合、環境設定で実行するソフトを指定してください。
 
 ## 対応環境
-* Windows OS (Windows10 64bit版では確認済み)
+* Windows OS (Windows8,10で確認済み)
 * .NET Framework 4.6.1以降がインストールされている環境
 * MC、MS-DOS Player(任意)、コンパイルデータの再生ソフト(任意)がインストールされている環境
 
