@@ -32,7 +32,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.environmentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileSeparateMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.fileSeparateMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.endMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.watchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.watchStartMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +45,8 @@
             this.watchStartButton = new System.Windows.Forms.Button();
             this.watchStopButton = new System.Windows.Forms.Button();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
+            this.fileSeparateMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.compileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.MMLGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
@@ -65,8 +67,10 @@
             // fileMenuItem
             // 
             this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compileMenuItem,
+            this.fileSeparateMenuItem1,
             this.environmentMenuItem,
-            this.fileSeparateMenuItem,
+            this.fileSeparateMenuItem2,
             this.endMenuItem});
             this.fileMenuItem.Name = "fileMenuItem";
             this.fileMenuItem.Size = new System.Drawing.Size(67, 20);
@@ -75,19 +79,19 @@
             // environmentMenuItem
             // 
             this.environmentMenuItem.Name = "environmentMenuItem";
-            this.environmentMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.environmentMenuItem.Size = new System.Drawing.Size(152, 22);
             this.environmentMenuItem.Text = "環境設定(&E)...";
             this.environmentMenuItem.Click += new System.EventHandler(this.environmentMenuItem_Click);
             // 
-            // fileSeparateMenuItem
+            // fileSeparateMenuItem1
             // 
-            this.fileSeparateMenuItem.Name = "fileSeparateMenuItem";
-            this.fileSeparateMenuItem.Size = new System.Drawing.Size(142, 6);
+            this.fileSeparateMenuItem1.Name = "fileSeparateMenuItem1";
+            this.fileSeparateMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // endMenuItem
             // 
             this.endMenuItem.Name = "endMenuItem";
-            this.endMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.endMenuItem.Size = new System.Drawing.Size(152, 22);
             this.endMenuItem.Text = "終了(&X)";
             this.endMenuItem.Click += new System.EventHandler(this.endMenuItem_Click);
             // 
@@ -103,7 +107,7 @@
             // watchStartMenuItem
             // 
             this.watchStartMenuItem.Name = "watchStartMenuItem";
-            this.watchStartMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.watchStartMenuItem.Size = new System.Drawing.Size(152, 22);
             this.watchStartMenuItem.Text = "監視開始(&W)";
             this.watchStartMenuItem.Click += new System.EventHandler(this.watchStartButton_Click);
             // 
@@ -111,7 +115,7 @@
             // 
             this.watchStopMenuItem.Enabled = false;
             this.watchStopMenuItem.Name = "watchStopMenuItem";
-            this.watchStopMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.watchStopMenuItem.Size = new System.Drawing.Size(152, 22);
             this.watchStopMenuItem.Text = "監視停止(&S)";
             this.watchStopMenuItem.Click += new System.EventHandler(this.watchStopButton_Click);
             // 
@@ -187,6 +191,18 @@
             this.fileSystemWatcher.SynchronizingObject = this;
             this.fileSystemWatcher.Changed += new System.IO.FileSystemEventHandler(this.fileSystemWatcher_Changed);
             // 
+            // fileSeparateMenuItem2
+            // 
+            this.fileSeparateMenuItem2.Name = "fileSeparateMenuItem2";
+            this.fileSeparateMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // compileMenuItem
+            // 
+            this.compileMenuItem.Name = "compileMenuItem";
+            this.compileMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.compileMenuItem.Text = "コンパイル(&C)";
+            this.compileMenuItem.Click += new System.EventHandler(this.compileMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -220,7 +236,7 @@
         private System.Windows.Forms.ToolStripMenuItem endMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versionMenuItem;
-        private System.Windows.Forms.ToolStripSeparator fileSeparateMenuItem;
+        private System.Windows.Forms.ToolStripSeparator fileSeparateMenuItem1;
         private System.Windows.Forms.GroupBox MMLGroupBox;
         private System.Windows.Forms.Button referenceButton;
         private System.Windows.Forms.Button watchStartButton;
@@ -230,6 +246,8 @@
         private System.Windows.Forms.ToolStripMenuItem watchStopMenuItem;
         private System.Windows.Forms.TextBox referenceTextBox;
         private System.IO.FileSystemWatcher fileSystemWatcher;
+        private System.Windows.Forms.ToolStripMenuItem compileMenuItem;
+        private System.Windows.Forms.ToolStripSeparator fileSeparateMenuItem2;
     }
 }
 

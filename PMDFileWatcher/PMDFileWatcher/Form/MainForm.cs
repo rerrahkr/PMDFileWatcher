@@ -96,6 +96,11 @@ namespace PMDFileWatcher.Form
             OnLoad(EventArgs.Empty);
         }
 
+        private void compileMenuItem_Click(object sender, EventArgs e)
+        {
+            Compile();
+        }
+
         private void environmentMenuItem_Click(object sender, EventArgs e)
         {
             ef.ShowDialog();
@@ -227,6 +232,11 @@ namespace PMDFileWatcher.Form
             }
             prevChangeTime = curChangeTime;
 
+            Compile();
+        }
+
+        private void Compile()
+        {
             if (settings.MSDOSEnable && !File.Exists(settings.MSDOSPath))
             {
                 MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -289,7 +299,6 @@ namespace PMDFileWatcher.Form
                 compileProcess = null;
                 compileResultTextList = null;
                 MessageBox.Show("MMLのコンパイルに失敗しました。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
         }
 
