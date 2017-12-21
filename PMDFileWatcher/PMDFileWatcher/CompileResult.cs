@@ -31,7 +31,7 @@ namespace PMDFileWatcher
             {
                 foreach (string line in textList)
                 {
-                    if (line.Contains("Compile Completed.") == true)
+                    if (line.Contains("Compile Completed."))
                     {
                         return true;
                     }
