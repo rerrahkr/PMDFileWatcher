@@ -137,17 +137,17 @@ namespace PMDFileWatcher.Form
             {
                 MessageBox.Show("監視するMMLが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (File.Exists(settings.MMLPath) == false)
+            else if (!File.Exists(settings.MMLPath))
             {
                 MessageBox.Show("指定したMMLは存在しません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (settings.MSDOSEnable == true && settings.MSDOSPath.Length == 0)
+                if (settings.MSDOSEnable && settings.MSDOSPath.Length == 0)
                 {
                     MessageBox.Show("MS-DOS Playerが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (settings.MSDOSEnable == true && File.Exists(settings.MSDOSPath) == false)
+                else if (settings.MSDOSEnable && !File.Exists(settings.MSDOSPath))
                 {
                     MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -157,17 +157,17 @@ namespace PMDFileWatcher.Form
                     {
                         MessageBox.Show("MCが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (File.Exists(settings.MCPath) == false)
+                    else if (!File.Exists(settings.MCPath))
                     {
                         MessageBox.Show("指定先にMCコンバータは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        if (settings.AutoPlay == true && settings.PlayerPath.Length == 0)
+                        if (settings.AutoPlay && settings.PlayerPath.Length == 0)
                         {
                             MessageBox.Show("プレーヤが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else if (settings.AutoPlay == true && File.Exists(settings.PlayerPath) == false)
+                        else if (settings.AutoPlay && !File.Exists(settings.PlayerPath))
                         {
                             MessageBox.Show("指定先にプレーヤは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -227,19 +227,19 @@ namespace PMDFileWatcher.Form
             }
             prevChangeTime = curChangeTime;
 
-            if (settings.MSDOSEnable == true && File.Exists(settings.MSDOSPath) == false)
+            if (settings.MSDOSEnable && !File.Exists(settings.MSDOSPath))
             {
                 MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (File.Exists(settings.MCPath) == false)
+            else if (!File.Exists(settings.MCPath))
             {
                 MessageBox.Show("指定先にMCは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             compileProcess = new System.Diagnostics.Process();
-            if (settings.MSDOSEnable == true)
+            if (settings.MSDOSEnable)
             {
                 compileProcess.StartInfo.FileName = settings.MSDOSPath;
                 if (settings.MCOption.Length == 0)
@@ -310,21 +310,28 @@ namespace PMDFileWatcher.Form
                     {
                         CompileResult cr = new CompileResult(compileResultTextList);
 
-                        if (crf == null)    // コンパイル結果フォームがない場合
+                        if (settings.ResultFormEnable)
                         {
-                            crf = new CompileResultForm();
-                            crf.FormClosed += (sender2, e2) => { crf = null; };
-                            crf.SetResult(cr);
-                            crf.Show();
+                            if (crf == null)    // コンパイル結果フォームがない場合
+                            {
+                                crf = new CompileResultForm();
+                                crf.FormClosed += (sender2, e2) => { crf = null; };
+                                crf.SetResult(cr);
+                                crf.Show();
+                            }
+                            else
+                            {
+                                crf.SetResult(cr);
+                            }
                         }
-                        else
+                        else if (crf != null)
                         {
-                            crf.SetResult(cr);
+                            crf.Close();
                         }
 
-                        if (cr.Success == true && settings.AutoPlay == true)
+                        if (cr.Success && settings.AutoPlay)
                         {
-                            if (File.Exists(settings.PlayerPath) == false)
+                            if (!File.Exists(settings.PlayerPath))
                             {
                                 MessageBox.Show("指定先にプレーヤは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;

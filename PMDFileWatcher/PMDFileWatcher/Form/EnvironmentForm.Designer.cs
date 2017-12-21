@@ -34,12 +34,12 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.compileTabPage = new System.Windows.Forms.TabPage();
             this.mcGroupBox = new System.Windows.Forms.GroupBox();
+            this.compileResultCheckBox = new System.Windows.Forms.CheckBox();
             this.mcReferenceTextBox = new System.Windows.Forms.TextBox();
             this.mcOptionTextBox = new System.Windows.Forms.TextBox();
             this.mcOptionLabel = new System.Windows.Forms.Label();
             this.mcReferenceButton = new System.Windows.Forms.Button();
             this.msdosGroupBox = new System.Windows.Forms.GroupBox();
-            this.msdosCaptionLabel = new System.Windows.Forms.Label();
             this.msdosCheckBox = new System.Windows.Forms.CheckBox();
             this.msdosReferenceTextBox = new System.Windows.Forms.TextBox();
             this.msdosReferenceButton = new System.Windows.Forms.Button();
@@ -104,16 +104,29 @@
             // 
             // mcGroupBox
             // 
+            this.mcGroupBox.Controls.Add(this.compileResultCheckBox);
             this.mcGroupBox.Controls.Add(this.mcReferenceTextBox);
             this.mcGroupBox.Controls.Add(this.mcOptionTextBox);
             this.mcGroupBox.Controls.Add(this.mcOptionLabel);
             this.mcGroupBox.Controls.Add(this.mcReferenceButton);
-            this.mcGroupBox.Location = new System.Drawing.Point(6, 101);
+            this.mcGroupBox.Location = new System.Drawing.Point(6, 79);
             this.mcGroupBox.Name = "mcGroupBox";
-            this.mcGroupBox.Size = new System.Drawing.Size(239, 91);
+            this.mcGroupBox.Size = new System.Drawing.Size(239, 113);
             this.mcGroupBox.TabIndex = 1;
             this.mcGroupBox.TabStop = false;
             this.mcGroupBox.Text = "MC";
+            // 
+            // compileResultCheckBox
+            // 
+            this.compileResultCheckBox.AutoSize = true;
+            this.compileResultCheckBox.Checked = true;
+            this.compileResultCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.compileResultCheckBox.Location = new System.Drawing.Point(6, 91);
+            this.compileResultCheckBox.Name = "compileResultCheckBox";
+            this.compileResultCheckBox.Size = new System.Drawing.Size(182, 16);
+            this.compileResultCheckBox.TabIndex = 5;
+            this.compileResultCheckBox.Text = "コンパイル結果フォームを表示する";
+            this.compileResultCheckBox.UseVisualStyleBackColor = true;
             // 
             // mcReferenceTextBox
             // 
@@ -125,7 +138,7 @@
             // 
             // mcOptionTextBox
             // 
-            this.mcOptionTextBox.Location = new System.Drawing.Point(6, 66);
+            this.mcOptionTextBox.Location = new System.Drawing.Point(6, 64);
             this.mcOptionTextBox.Name = "mcOptionTextBox";
             this.mcOptionTextBox.Size = new System.Drawing.Size(227, 19);
             this.mcOptionTextBox.TabIndex = 3;
@@ -133,7 +146,7 @@
             // mcOptionLabel
             // 
             this.mcOptionLabel.AutoSize = true;
-            this.mcOptionLabel.Location = new System.Drawing.Point(6, 51);
+            this.mcOptionLabel.Location = new System.Drawing.Point(6, 49);
             this.mcOptionLabel.Name = "mcOptionLabel";
             this.mcOptionLabel.Size = new System.Drawing.Size(96, 12);
             this.mcOptionLabel.TabIndex = 2;
@@ -151,26 +164,15 @@
             // 
             // msdosGroupBox
             // 
-            this.msdosGroupBox.Controls.Add(this.msdosCaptionLabel);
             this.msdosGroupBox.Controls.Add(this.msdosCheckBox);
             this.msdosGroupBox.Controls.Add(this.msdosReferenceTextBox);
             this.msdosGroupBox.Controls.Add(this.msdosReferenceButton);
             this.msdosGroupBox.Location = new System.Drawing.Point(6, 6);
             this.msdosGroupBox.Name = "msdosGroupBox";
-            this.msdosGroupBox.Size = new System.Drawing.Size(239, 89);
+            this.msdosGroupBox.Size = new System.Drawing.Size(239, 67);
             this.msdosGroupBox.TabIndex = 0;
             this.msdosGroupBox.TabStop = false;
             this.msdosGroupBox.Text = "MS-DOS Player";
-            // 
-            // msdosCaptionLabel
-            // 
-            this.msdosCaptionLabel.AutoSize = true;
-            this.msdosCaptionLabel.Enabled = false;
-            this.msdosCaptionLabel.Location = new System.Drawing.Point(6, 47);
-            this.msdosCaptionLabel.Name = "msdosCaptionLabel";
-            this.msdosCaptionLabel.Size = new System.Drawing.Size(76, 12);
-            this.msdosCaptionLabel.TabIndex = 4;
-            this.msdosCaptionLabel.Text = "実行プログラム:";
             // 
             // msdosCheckBox
             // 
@@ -186,7 +188,7 @@
             // msdosReferenceTextBox
             // 
             this.msdosReferenceTextBox.Enabled = false;
-            this.msdosReferenceTextBox.Location = new System.Drawing.Point(6, 62);
+            this.msdosReferenceTextBox.Location = new System.Drawing.Point(6, 40);
             this.msdosReferenceTextBox.Name = "msdosReferenceTextBox";
             this.msdosReferenceTextBox.ReadOnly = true;
             this.msdosReferenceTextBox.Size = new System.Drawing.Size(191, 19);
@@ -195,7 +197,7 @@
             // msdosReferenceButton
             // 
             this.msdosReferenceButton.Enabled = false;
-            this.msdosReferenceButton.Location = new System.Drawing.Point(203, 60);
+            this.msdosReferenceButton.Location = new System.Drawing.Point(203, 38);
             this.msdosReferenceButton.Name = "msdosReferenceButton";
             this.msdosReferenceButton.Size = new System.Drawing.Size(30, 23);
             this.msdosReferenceButton.TabIndex = 1;
@@ -329,7 +331,7 @@
         private System.Windows.Forms.TextBox msdosReferenceTextBox;
         private System.Windows.Forms.TextBox mcReferenceTextBox;
         private System.Windows.Forms.TextBox playerReferenceTextBox;
-        private System.Windows.Forms.Label msdosCaptionLabel;
         private System.Windows.Forms.CheckBox msdosCheckBox;
+        private System.Windows.Forms.CheckBox compileResultCheckBox;
     }
 }

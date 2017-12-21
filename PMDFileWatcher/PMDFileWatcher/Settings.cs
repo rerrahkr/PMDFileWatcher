@@ -15,6 +15,7 @@ namespace PMDFileWatcher
         public string MSDOSPath { set; get; } = String.Empty;
         public string MCPath { set; get; } = String.Empty;
         public string MCOption { set; get; } = String.Empty;
+        public bool ResultFormEnable { set; get; } = true;
         public bool AutoPlay { set; get; } = true;
         public string PlayerPath { set; get; } = String.Empty;
 

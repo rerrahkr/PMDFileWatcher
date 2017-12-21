@@ -20,10 +20,10 @@ namespace PMDFileWatcher
                     while (sr.Peek() > -1)
                     {
                         Match match = regex.Match(sr.ReadLine());
-                        if (match.Success == true)
+                        if (match.Success)
                         {
                             string compiledFileName;
-                            if (match.Groups["name"].Value.StartsWith(".") == true) // 拡張子のみ指定
+                            if (match.Groups["name"].Value.StartsWith(".")) // 拡張子のみ指定
                             {
                                 compiledFileName = Path.GetFileNameWithoutExtension(mmlPath) + match.Groups["name"].Value;
                             }

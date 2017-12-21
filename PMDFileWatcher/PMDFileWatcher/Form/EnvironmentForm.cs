@@ -38,6 +38,7 @@ namespace PMDFileWatcher.Form
             msdosReferenceTextBox.Text = settings.MSDOSPath;
             mcReferenceTextBox.Text = settings.MCPath;
             mcOptionTextBox.Text = settings.MCOption;
+            compileResultCheckBox.Checked = settings.ResultFormEnable;
             autoPlayCheckBox.Checked = settings.AutoPlay;
             playerReferenceTextBox.Text = settings.PlayerPath;
         }
@@ -45,15 +46,13 @@ namespace PMDFileWatcher.Form
         private void msdosCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
-            if (cb.Checked == true)
+            if (cb.Checked)
             {
-                msdosCaptionLabel.Enabled = true;
                 msdosReferenceTextBox.Enabled = true;
                 msdosReferenceButton.Enabled = true;
             }
-            else if (cb.Checked == false)
+            else
             {
-                msdosCaptionLabel.Enabled = false;
                 msdosReferenceTextBox.Enabled = false;
                 msdosReferenceButton.Enabled = false;
             }
@@ -82,13 +81,13 @@ namespace PMDFileWatcher.Form
         private void autoPlayCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
-            if (cb.Checked == true)
+            if (cb.Checked)
             {
                 playerCaptionLabel.Enabled = true;
                 playerReferenceTextBox.Enabled = true;
                 playerReferenceButton.Enabled = true;
             }
-            else if (cb.Checked == false)
+            else
             {
                 playerCaptionLabel.Enabled = false;
                 playerReferenceTextBox.Enabled = false;
@@ -112,6 +111,7 @@ namespace PMDFileWatcher.Form
             settings.MSDOSPath = msdosReferenceTextBox.Text;
             settings.MCPath = mcReferenceTextBox.Text;
             settings.MCOption = mcOptionTextBox.Text;
+            settings.ResultFormEnable = compileResultCheckBox.Checked;
             settings.AutoPlay = autoPlayCheckBox.Checked;
             settings.PlayerPath = playerReferenceTextBox.Text;
 
