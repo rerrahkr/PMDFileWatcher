@@ -22,7 +22,7 @@ namespace PMDFileWatcher
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("不明なエラーが発生しました。\nException Message: {0}", ex.Message), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An unknown error occured." + Environment.NewLine + "Exception Message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

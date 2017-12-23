@@ -61,7 +61,7 @@ namespace PMDFileWatcher.Form
         private void msdosReferenceButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "MS-DOS Playerを選択";
+            ofd.Title = "Select MS-DOS Player";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 msdosReferenceTextBox.Text = ofd.FileName;
@@ -71,7 +71,7 @@ namespace PMDFileWatcher.Form
         private void mcReferenceButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "MMLコンパイラを選択";
+            ofd.Title = "Select MC";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 mcReferenceTextBox.Text = ofd.FileName;
@@ -98,7 +98,7 @@ namespace PMDFileWatcher.Form
         private void playerReferenceButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "プレーヤを選択";
+            ofd.Title = "Select Player";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 playerReferenceTextBox.Text = ofd.FileName;

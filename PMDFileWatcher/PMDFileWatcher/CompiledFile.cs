@@ -23,7 +23,7 @@ namespace PMDFileWatcher
                         if (match.Success)
                         {
                             string compiledFileName;
-                            if (match.Groups["name"].Value.StartsWith(".")) // 拡張子のみ指定
+                            if (match.Groups["name"].Value.StartsWith(".")) // Extension only
                             {
                                 compiledFileName = Path.GetFileNameWithoutExtension(mmlPath) + match.Groups["name"].Value;
                             }
@@ -34,7 +34,7 @@ namespace PMDFileWatcher
                             return compiledFileName;
                         }
                     }
-                    return Path.GetFileNameWithoutExtension(mmlPath) + ".M";    // コンパイル後のファイル名指定なし
+                    return Path.GetFileNameWithoutExtension(mmlPath) + ".M";    // Unspecified
                 }
             }
             catch

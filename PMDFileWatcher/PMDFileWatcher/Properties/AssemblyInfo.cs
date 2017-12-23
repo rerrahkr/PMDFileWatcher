@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
 [assembly: AssemblyTitle("PMDFileWatcher")]
-[assembly: AssemblyDescription("PMDMML監視・自動コンパイル・自動再生補助ツール")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RerrahSoft")]
 [assembly: AssemblyProduct("PMDFileWatcher")]
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.3")]
-[assembly: AssemblyFileVersion("1.1.3")]
-[assembly: NeutralResourcesLanguage("ja-JP")]
+[assembly: AssemblyVersion("1.2.0")]
+[assembly: AssemblyFileVersion("1.2.0")]
+[assembly: NeutralResourcesLanguage("")]
 

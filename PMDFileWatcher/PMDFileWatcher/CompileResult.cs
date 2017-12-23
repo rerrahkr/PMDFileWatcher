@@ -36,11 +36,11 @@ namespace PMDFileWatcher
                         return true;
                     }
                 }
-                return false;   // MML構文エラー(コンパイル失敗)
+                return false;   // MML syntax error
             }
             catch
             {
-                return false;   // コンパイルプロセスの異常終了
+                return false;   // Abort
             }
         }
 
@@ -48,7 +48,7 @@ namespace PMDFileWatcher
         {
             if (textList == null)
             {
-                return "コンパイルの実行に失敗しました。";
+                return "Failed to compile MML.";
             }
             else
             {
@@ -58,18 +58,18 @@ namespace PMDFileWatcher
                     foreach (string line in textList)
                     {
                         sb.Append(line);
-                        sb.Append("\r\n");
+                        sb.Append(Environment.NewLine);
 
                     }
                     return sb.ToString();
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    return "データのサイズが大きすぎます。";
+                    return "MML size is too large.";
                 }
                 catch
                 {
-                    return "実行結果を表示できません。";
+                    return "Could not display compilation result.";
                 }
             }
         }
