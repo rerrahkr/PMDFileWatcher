@@ -98,7 +98,7 @@
             this.MinimizeBox = false;
             this.Name = "VersionForm";
             this.ShowInTaskbar = false;
-            this.Text = "バージョン情報";
+            this.Text = "About";
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
             this.ResumeLayout(false);
 

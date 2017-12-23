@@ -73,14 +73,14 @@
             this.fileSeparateMenuItem2,
             this.endMenuItem});
             this.fileMenuItem.Name = "fileMenuItem";
-            this.fileMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.fileMenuItem.Text = "ファイル(&F)";
+            this.fileMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.fileMenuItem.Text = "File(&F)";
             // 
             // environmentMenuItem
             // 
             this.environmentMenuItem.Name = "environmentMenuItem";
             this.environmentMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.environmentMenuItem.Text = "環境設定(&E)...";
+            this.environmentMenuItem.Text = "Settings(&E)...";
             this.environmentMenuItem.Click += new System.EventHandler(this.environmentMenuItem_Click);
             // 
             // fileSeparateMenuItem1
@@ -92,7 +92,7 @@
             // 
             this.endMenuItem.Name = "endMenuItem";
             this.endMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.endMenuItem.Text = "終了(&X)";
+            this.endMenuItem.Text = "Exit(&X)";
             this.endMenuItem.Click += new System.EventHandler(this.endMenuItem_Click);
             // 
             // watchMenuItem
@@ -101,14 +101,14 @@
             this.watchStartMenuItem,
             this.watchStopMenuItem});
             this.watchMenuItem.Name = "watchMenuItem";
-            this.watchMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.watchMenuItem.Text = "監視(&W)";
+            this.watchMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.watchMenuItem.Text = "Monitoring(&M)";
             // 
             // watchStartMenuItem
             // 
             this.watchStartMenuItem.Name = "watchStartMenuItem";
             this.watchStartMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.watchStartMenuItem.Text = "監視開始(&W)";
+            this.watchStartMenuItem.Text = "Start(&M)";
             this.watchStartMenuItem.Click += new System.EventHandler(this.watchStartButton_Click);
             // 
             // watchStopMenuItem
@@ -116,7 +116,7 @@
             this.watchStopMenuItem.Enabled = false;
             this.watchStopMenuItem.Name = "watchStopMenuItem";
             this.watchStopMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.watchStopMenuItem.Text = "監視停止(&S)";
+            this.watchStopMenuItem.Text = "Stop(&S)";
             this.watchStopMenuItem.Click += new System.EventHandler(this.watchStopButton_Click);
             // 
             // helpMenuItem
@@ -124,14 +124,14 @@
             this.helpMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.versionMenuItem});
             this.helpMenuItem.Name = "helpMenuItem";
-            this.helpMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.helpMenuItem.Text = "ヘルプ(&H)";
+            this.helpMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.helpMenuItem.Text = "Help(&H)";
             // 
             // versionMenuItem
             // 
             this.versionMenuItem.Name = "versionMenuItem";
-            this.versionMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.versionMenuItem.Text = "バージョン情報(&A)...";
+            this.versionMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.versionMenuItem.Text = "About(&A)...";
             this.versionMenuItem.Click += new System.EventHandler(this.versionMenuItem_Click);
             // 
             // MMLGroupBox
@@ -143,7 +143,7 @@
             this.MMLGroupBox.Size = new System.Drawing.Size(260, 52);
             this.MMLGroupBox.TabIndex = 5;
             this.MMLGroupBox.TabStop = false;
-            this.MMLGroupBox.Text = "監視MMLファイル";
+            this.MMLGroupBox.Text = "Target MML";
             // 
             // referenceTextBox
             // 
@@ -169,7 +169,7 @@
             this.watchStartButton.Name = "watchStartButton";
             this.watchStartButton.Size = new System.Drawing.Size(75, 23);
             this.watchStartButton.TabIndex = 6;
-            this.watchStartButton.Text = "監視開始";
+            this.watchStartButton.Text = "Start";
             this.watchStartButton.UseVisualStyleBackColor = true;
             this.watchStartButton.Click += new System.EventHandler(this.watchStartButton_Click);
             // 
@@ -180,7 +180,7 @@
             this.watchStopButton.Name = "watchStopButton";
             this.watchStopButton.Size = new System.Drawing.Size(75, 23);
             this.watchStopButton.TabIndex = 7;
-            this.watchStopButton.Text = "監視停止";
+            this.watchStopButton.Text = "Stop";
             this.watchStopButton.UseVisualStyleBackColor = true;
             this.watchStopButton.Click += new System.EventHandler(this.watchStopButton_Click);
             // 
@@ -200,7 +200,7 @@
             // 
             this.compileMenuItem.Name = "compileMenuItem";
             this.compileMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.compileMenuItem.Text = "コンパイル(&C)";
+            this.compileMenuItem.Text = "Compile(&C)";
             this.compileMenuItem.Click += new System.EventHandler(this.compileMenuItem_Click);
             // 
             // MainForm

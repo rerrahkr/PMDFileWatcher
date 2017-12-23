@@ -68,7 +68,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CompileResultForm";
-            this.Text = "コンパイル結果";
+            this.Text = "Compilation Result";
             this.ResumeLayout(false);
             this.PerformLayout();
 

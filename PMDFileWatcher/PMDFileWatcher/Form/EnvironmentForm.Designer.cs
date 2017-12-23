@@ -65,7 +65,7 @@
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 0;
-            this.saveButton.Text = "保存";
+            this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
@@ -76,7 +76,7 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 1;
-            this.cancelButton.Text = "キャンセル";
+            this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
@@ -99,7 +99,7 @@
             this.compileTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.compileTabPage.Size = new System.Drawing.Size(251, 197);
             this.compileTabPage.TabIndex = 0;
-            this.compileTabPage.Text = "コンパイル";
+            this.compileTabPage.Text = "Compile";
             this.compileTabPage.UseVisualStyleBackColor = true;
             // 
             // mcGroupBox
@@ -123,9 +123,9 @@
             this.compileResultCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.compileResultCheckBox.Location = new System.Drawing.Point(6, 91);
             this.compileResultCheckBox.Name = "compileResultCheckBox";
-            this.compileResultCheckBox.Size = new System.Drawing.Size(182, 16);
+            this.compileResultCheckBox.Size = new System.Drawing.Size(146, 16);
             this.compileResultCheckBox.TabIndex = 5;
-            this.compileResultCheckBox.Text = "コンパイル結果フォームを表示する";
+            this.compileResultCheckBox.Text = "Show compilation result";
             this.compileResultCheckBox.UseVisualStyleBackColor = true;
             // 
             // mcReferenceTextBox
@@ -148,9 +148,9 @@
             this.mcOptionLabel.AutoSize = true;
             this.mcOptionLabel.Location = new System.Drawing.Point(6, 49);
             this.mcOptionLabel.Name = "mcOptionLabel";
-            this.mcOptionLabel.Size = new System.Drawing.Size(96, 12);
+            this.mcOptionLabel.Size = new System.Drawing.Size(46, 12);
             this.mcOptionLabel.TabIndex = 2;
-            this.mcOptionLabel.Text = "コンパイルオプション:";
+            this.mcOptionLabel.Text = "Options:";
             // 
             // mcReferenceButton
             // 
@@ -179,9 +179,9 @@
             this.msdosCheckBox.AutoSize = true;
             this.msdosCheckBox.Location = new System.Drawing.Point(6, 18);
             this.msdosCheckBox.Name = "msdosCheckBox";
-            this.msdosCheckBox.Size = new System.Drawing.Size(157, 16);
+            this.msdosCheckBox.Size = new System.Drawing.Size(129, 16);
             this.msdosCheckBox.TabIndex = 3;
-            this.msdosCheckBox.Text = "MS-DOS Playerを使用する";
+            this.msdosCheckBox.Text = "Use MS-DOS Player";
             this.msdosCheckBox.UseVisualStyleBackColor = true;
             this.msdosCheckBox.CheckedChanged += new System.EventHandler(this.msdosCheckBox_CheckedChanged);
             // 
@@ -213,7 +213,7 @@
             this.playTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.playTabPage.Size = new System.Drawing.Size(251, 197);
             this.playTabPage.TabIndex = 1;
-            this.playTabPage.Text = "演奏";
+            this.playTabPage.Text = "Play";
             this.playTabPage.UseVisualStyleBackColor = true;
             // 
             // playEnableGroupBox
@@ -224,14 +224,14 @@
             this.playEnableGroupBox.Controls.Add(this.autoPlayCheckBox);
             this.playEnableGroupBox.Location = new System.Drawing.Point(6, 6);
             this.playEnableGroupBox.Name = "playEnableGroupBox";
-            this.playEnableGroupBox.Size = new System.Drawing.Size(239, 89);
+            this.playEnableGroupBox.Size = new System.Drawing.Size(239, 82);
             this.playEnableGroupBox.TabIndex = 0;
             this.playEnableGroupBox.TabStop = false;
-            this.playEnableGroupBox.Text = "自動演奏";
+            this.playEnableGroupBox.Text = "Autoplay";
             // 
             // playerReferenceTextBox
             // 
-            this.playerReferenceTextBox.Location = new System.Drawing.Point(6, 62);
+            this.playerReferenceTextBox.Location = new System.Drawing.Point(6, 55);
             this.playerReferenceTextBox.Name = "playerReferenceTextBox";
             this.playerReferenceTextBox.ReadOnly = true;
             this.playerReferenceTextBox.Size = new System.Drawing.Size(191, 19);
@@ -240,15 +240,15 @@
             // playerCaptionLabel
             // 
             this.playerCaptionLabel.AutoSize = true;
-            this.playerCaptionLabel.Location = new System.Drawing.Point(6, 47);
+            this.playerCaptionLabel.Location = new System.Drawing.Point(6, 40);
             this.playerCaptionLabel.Name = "playerCaptionLabel";
-            this.playerCaptionLabel.Size = new System.Drawing.Size(76, 12);
+            this.playerCaptionLabel.Size = new System.Drawing.Size(39, 12);
             this.playerCaptionLabel.TabIndex = 4;
-            this.playerCaptionLabel.Text = "実行プログラム:";
+            this.playerCaptionLabel.Text = "Player:";
             // 
             // playerReferenceButton
             // 
-            this.playerReferenceButton.Location = new System.Drawing.Point(203, 60);
+            this.playerReferenceButton.Location = new System.Drawing.Point(203, 53);
             this.playerReferenceButton.Name = "playerReferenceButton";
             this.playerReferenceButton.Size = new System.Drawing.Size(30, 23);
             this.playerReferenceButton.TabIndex = 3;
@@ -263,9 +263,9 @@
             this.autoPlayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoPlayCheckBox.Location = new System.Drawing.Point(6, 18);
             this.autoPlayCheckBox.Name = "autoPlayCheckBox";
-            this.autoPlayCheckBox.Size = new System.Drawing.Size(191, 16);
+            this.autoPlayCheckBox.Size = new System.Drawing.Size(187, 16);
             this.autoPlayCheckBox.TabIndex = 0;
-            this.autoPlayCheckBox.Text = "コンパイル成功後、自動で演奏する";
+            this.autoPlayCheckBox.Text = "Autoplay song after compilation";
             this.autoPlayCheckBox.UseVisualStyleBackColor = true;
             this.autoPlayCheckBox.CheckedChanged += new System.EventHandler(this.autoPlayCheckBox_CheckedChanged);
             // 
@@ -275,7 +275,7 @@
             this.initializeButton.Name = "initializeButton";
             this.initializeButton.Size = new System.Drawing.Size(75, 23);
             this.initializeButton.TabIndex = 3;
-            this.initializeButton.Text = "初期値";
+            this.initializeButton.Text = "Default";
             this.initializeButton.UseVisualStyleBackColor = true;
             this.initializeButton.Click += new System.EventHandler(this.initializeButton_Click);
             // 
@@ -296,7 +296,7 @@
             this.MinimizeBox = false;
             this.Name = "EnvironmentForm";
             this.ShowInTaskbar = false;
-            this.Text = "環境設定";
+            this.Text = "Settings";
             this.tabControl.ResumeLayout(false);
             this.compileTabPage.ResumeLayout(false);
             this.mcGroupBox.ResumeLayout(false);

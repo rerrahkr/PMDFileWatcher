@@ -74,12 +74,11 @@ namespace PMDFileWatcher.Form
             try
             {
                 var fileNameArray = (string[])drgevent.Data.GetData(DataFormats.FileDrop, false);
-                Console.WriteLine(fileNameArray[0]);
                 SetTargetFile(fileNameArray[0]);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -120,7 +119,7 @@ namespace PMDFileWatcher.Form
         private void referenceButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "監視するMMLを選択";
+            ofd.Title = "Select MML";
             ofd.Filter = "MML File (*.mml)|*.mml|All File (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -140,41 +139,41 @@ namespace PMDFileWatcher.Form
         {
             if (settings.MMLPath.Length == 0)
             {
-                MessageBox.Show("監視するMMLが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Target MML is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (!File.Exists(settings.MMLPath))
             {
-                MessageBox.Show("指定したMMLは存在しません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Target MML was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (settings.MSDOSEnable && settings.MSDOSPath.Length == 0)
                 {
-                    MessageBox.Show("MS-DOS Playerが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("MS-DOS Player is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (settings.MSDOSEnable && !File.Exists(settings.MSDOSPath))
                 {
-                    MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("MS-DOS Player was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     if (settings.MCPath.Length == 0)
                     {
-                        MessageBox.Show("MCが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("MC is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if (!File.Exists(settings.MCPath))
                     {
-                        MessageBox.Show("指定先にMCコンバータは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("MC was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
                         if (settings.AutoPlay && settings.PlayerPath.Length == 0)
                         {
-                            MessageBox.Show("プレーヤが未設定です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Player is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else if (settings.AutoPlay && !File.Exists(settings.PlayerPath))
                         {
-                            MessageBox.Show("指定先にプレーヤは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Player was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -193,7 +192,7 @@ namespace PMDFileWatcher.Form
                             }
                             catch
                             {
-                                MessageBox.Show("MMLファイルのパス指定が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("MML path is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -203,13 +202,13 @@ namespace PMDFileWatcher.Form
 
         private void watchStopButton_Click(object sender, EventArgs e)
         {
-            if (compileProcess != null) // コンパイル中止
+            if (compileProcess != null) // Stop the compile
             {
                 compileProcess.Kill();
                 compileProcess.Close();
                 compileProcess = null;
                 compileResultTextList = null;
-                MessageBox.Show("MMLのコンパイルを中断しました。", "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cancelled MML compilation.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             fileSystemWatcher.EnableRaisingEvents = false;
@@ -224,7 +223,7 @@ namespace PMDFileWatcher.Form
 
         private void fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
-            // 複数回イベント実行防止
+            // Prevent continuous execution 
             DateTime curChangeTime = DateTime.Now;
             if (curChangeTime - prevChangeTime < TimeSpan.FromMilliseconds(250))
             {
@@ -237,14 +236,19 @@ namespace PMDFileWatcher.Form
 
         private void Compile()
         {
-            if (settings.MSDOSEnable && !File.Exists(settings.MSDOSPath))
+            if (!File.Exists(settings.MMLPath))
             {
-                MessageBox.Show("指定先にMS-DOS Playerは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Target MML was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (settings.MSDOSEnable && !File.Exists(settings.MSDOSPath))
+            {
+                MessageBox.Show("MS-DOS Player was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (!File.Exists(settings.MCPath))
             {
-                MessageBox.Show("指定先にMCは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("MC was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -298,13 +302,13 @@ namespace PMDFileWatcher.Form
                 compileProcess.Close();
                 compileProcess = null;
                 compileResultTextList = null;
-                MessageBox.Show("MMLのコンパイルに失敗しました。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to compile MML.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void compileProcess_OutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
         {
-            if (compileProcess != null) // MainFormでコンパイルキャンセルした直後は空処理
+            if (compileProcess != null) // Skip when cancelling compilation in MainForm
             {
                 if (e.Data != null)
                 {
@@ -321,7 +325,7 @@ namespace PMDFileWatcher.Form
 
                         if (settings.ResultFormEnable)
                         {
-                            if (crf == null)    // コンパイル結果フォームがない場合
+                            if (crf == null)    // Closed compilation result form
                             {
                                 crf = new CompileResultForm();
                                 crf.FormClosed += (sender2, e2) => { crf = null; };
@@ -342,7 +346,7 @@ namespace PMDFileWatcher.Form
                         {
                             if (!File.Exists(settings.PlayerPath))
                             {
-                                MessageBox.Show("指定先にプレーヤは存在していません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Player was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
 
@@ -361,7 +365,7 @@ namespace PMDFileWatcher.Form
                             {
                                 playProcess.Close();
                                 playProcess = null;
-                                MessageBox.Show("コンパイルしたデータの再生に失敗しました。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Failed to play the compiled data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }));
