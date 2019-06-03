@@ -1,40 +1,35 @@
 # PMDFileWatcher
-PMDMML監視ツール  
+Monitor, compile and play MML for PMD automatically  
 Copyright (C) 2017 Rerrah
 
-## 概要
-PMDFileWatcherはPMD用MMLの更新を監視し、自動でMMLコンパイラを実行してFMPMDなどのプレーヤに再生させるソフトです。  
-コンパイル・再生時に利用するプログラムは「Settings」で指定できます。  
-  
-64bit Windows OS上では16bitプログラムであるMCを直接実行することができません。MMLのコンパイルを行うには[MS-DOS Player](http://takeda-toshiya.my.coocan.jp/msdos/)が必要となります。
+[日本語](./README_ja.md)
 
-### MMLのコンパイル
-MMLをドラッグ&ドロップして監視対象とすることができます。  
-Startボタンを押すことで指定したMMLの監視を開始します。  
-MMLが更新されたとき、「Settings」で指定されたMS-DOS Player(任意)とMCを自動実行しMMLをコンパイルします。  
-コンパイル終了後、コンパイル結果フォームが開きます。  
-なお、コンパイル後のデータ(拡張子が.M、.M2などのファイル)は監視するMMLと同じフォルダに生成されます。  
-Stopボタンを押すとMMLの監視を停止します。  
-また、「Compile」でMMLの強制コンパイルを行うことができます。
+## Overview
+PMDFileWatcher is an application that monitors the update of MML for PMD, automatically compiles the MML and play it on players such as FMPMD.  
+The program to be used for compilation and playback can be specified in "Settings".  
 
-### 自動再生
-コンパイル後にデータを自動再生を行うかの選択は「Settings」で指定できます。  
-自動再生を行う場合、「Settings」の「Autoplay」で実行するソフトを指定してください。
+On 64-bit Windows OS, you can not directly execute MC the compiler which is a 16-bit program. To resolve this problem, [MS-DOS Player](http://takeda-toshiya.my.coocan.jp/msdos/) is required.
 
-## 対応環境
-* Windows OS (Windows8,10で確認済み)
-* .NET Framework 4.6.1以降がインストールされている環境
-* MC、MS-DOS Player(任意)、コンパイルデータの再生ソフト(任意)がインストールされている環境
+### MML compilation
+You can drag and drop a MML file to make it a monitoring target.  
+Pressing "Start", the app begins monitoring the MML.  
+When MML is updated, it automatically executes MS-DOS Player (optional) and MC specified in "Settings" to compile MML.  
+After compilation, the compilation result form opens.  
+The compiled data (files with the extension .M, .M2, etc.) are generated in the same place as the MML.  
+Press the Stop button to stop MML monitoring.  
+You can also force MML compilation with "Compile".
 
-## インストール
-ダウンロードした圧縮ファイルをインストールするフォルダに移動させ、解凍してください。
+### Autoplay
+You can specify whether to play compiled data automatically after compilation in "Settings".  
+When performing autoplay, please set the program to be executed in "Autoplay" of "Settings".
 
-## 使用方法
-PMDFileWatcher.exeをダブルクリックしてください。
+### Requirements
+* Windows OS (tested on Windows 8 and 10)
+* .NET Framework 4.6.1 or later
+* MC.exe (PMD compiler)
+* MS-DOS Player (optional)
+* Playback software (optional)
 
-## アンインストール
-インストールしたフォルダを削除してください。
-
-## 著作権 / ライセンス
-本ソフトの著作権はRerrahが所有します。  
-本ソフトのライセンスはMIT Licenseです。
+## License
+This application is licensed under MIT License. 
+*See [LICENSE](./LICENSE).*
