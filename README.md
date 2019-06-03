@@ -23,7 +23,7 @@ You can also force MML compilation with "Compile".
 You can specify whether to play compiled data automatically after compilation in "Settings".  
 When performing autoplay, please set the program to be executed in "Autoplay" of "Settings".
 
-### Requirements
+## Requirements
 * Windows OS (tested on Windows 8 and 10)
 * .NET Framework 4.6.1 or later
 * MC.exe (PMD compiler)
