@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace PMDFileWatcher.Form
 {
-    public partial class EnvironmentForm : System.Windows.Forms.Form
+    public partial class SettingsForm : System.Windows.Forms.Form
     {
         public event InitializeButtonClickEventHandler InitializeButtonClick;
 
         private Settings settings;
 
-        public EnvironmentForm(Settings settings)
+        public SettingsForm(Settings settings)
         {
             InitializeComponent();
 

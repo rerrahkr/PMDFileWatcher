@@ -36,6 +36,9 @@
             // resultTextBox
             // 
             this.resultTextBox.AcceptsReturn = true;
+            this.resultTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.resultTextBox.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.resultTextBox.Location = new System.Drawing.Point(12, 12);
             this.resultTextBox.Multiline = true;
@@ -47,6 +50,7 @@
             // 
             // okButton
             // 
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.okButton.Location = new System.Drawing.Point(445, 212);
             this.okButton.Name = "okButton";

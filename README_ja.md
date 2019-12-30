@@ -6,9 +6,19 @@ Copyright (C) 2017 Rerrah
 
 ## 概要
 PMDFileWatcherはPMD用MMLの更新を監視し、自動でMMLコンパイラを実行してFMPMDなどのプレーヤに再生させるソフトです。  
-コンパイル・再生に利用するプログラムは「Settings」で指定できます。  
+コンパイル・再生に利用するプログラムは「Settings」で指定できます。
 
-64bit Windows OS上では16bitプログラムであるMCを直接実行することができません。MMLのコンパイルを行うには[MS-DOS Player](http://takeda-toshiya.my.coocan.jp/msdos/)が必要となります。
+#### 64-bit OSでMMLをコンパイルする際の注意点
+64bit Windows OSでは16bitプログラムであるMC.EXEを直接実行することができません。  
+このアプリは[MS-DOS Player](http://takeda-toshiya.my.coocan.jp/msdos/)を通してMCを実行するため、コンパイルする前に予めMS-DOS Playerを用意する必要があります。  
+またSettingsでMS-DOS Playerへのパスを設定する必要があります。
+
+MCを上の実行可能ファイルに予めに変換しておくことで、毎回MS-DOS Playerを使用せずにMCを実行する事も可能です。  
+MS-DOS Playerには`-c`オプションがあり、これにより変換されたexeが作成されます。
+
+```bat
+./msdos.exe -c"新しいexeのパス" "MCのパス"
+```
 
 ### MMLのコンパイル
 MMLをドラッグ&ドロップして監視対象とすることができます。  
