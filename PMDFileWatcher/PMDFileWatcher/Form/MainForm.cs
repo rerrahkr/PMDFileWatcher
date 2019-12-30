@@ -189,6 +189,7 @@ namespace PMDFileWatcher.Form
                                 watchStartMenuItem.Enabled = false;
                                 watchStopMenuItem.Enabled = true;
                                 referenceButton.Enabled = false;
+                                toolStripStatusLabel.Text = "Monitoring...";
                             }
                             catch
                             {
@@ -219,6 +220,7 @@ namespace PMDFileWatcher.Form
             watchStartMenuItem.Enabled = true;
             watchStopMenuItem.Enabled = false;
             referenceButton.Enabled = true;
+            toolStripStatusLabel.Text = "Ready";
         }
 
         private void fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
@@ -239,16 +241,19 @@ namespace PMDFileWatcher.Form
             if (!File.Exists(settings.MMLPath))
             {
                 MessageBox.Show("Target MML was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                toolStripStatusLabel.Text = "Compilation failed";
                 return;
             }
             else if (settings.MSDOSEnable && !File.Exists(settings.MSDOSPath))
             {
                 MessageBox.Show("MS-DOS Player was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                toolStripStatusLabel.Text = "Compilation failed";
                 return;
             }
             else if (!File.Exists(settings.MCPath))
             {
                 MessageBox.Show("MC was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                toolStripStatusLabel.Text = "Compilation failed";
                 return;
             }
 
@@ -284,6 +289,8 @@ namespace PMDFileWatcher.Form
             compileProcess.OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(compileProcess_OutputDataReceived);
 
             compileResultTextList = new List<string>();
+            toolStripStatusLabel.Text = "Compiling...";
+            statusStrip.Update();
             try
             {
                 compileProcess.Start();
@@ -303,6 +310,8 @@ namespace PMDFileWatcher.Form
                 compileProcess = null;
                 compileResultTextList = null;
                 MessageBox.Show("Failed to compile MML.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                toolStripStatusLabel.Text = "Compilation failed";
+                return;
             }
         }
 
@@ -342,14 +351,27 @@ namespace PMDFileWatcher.Form
                             crf.Close();
                         }
 
+                        if (cr.Success)
+                        {
+                            toolStripStatusLabel.Text = "Compiled";
+                        }
+                        else
+                        {
+                            toolStripStatusLabel.Text = "Compilation failed";
+
+                        }
+
                         if (cr.Success && settings.AutoPlay)
                         {
                             if (!File.Exists(settings.PlayerPath))
                             {
                                 MessageBox.Show("Player was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                toolStripStatusLabel.Text = "Autoplay failed";
                                 return;
                             }
 
+                            toolStripStatusLabel.Text = "Sending the song to the player...";
+                            statusStrip.Update();
                             try
                             {
                                 playProcess?.Close();
@@ -366,7 +388,11 @@ namespace PMDFileWatcher.Form
                                 playProcess.Close();
                                 playProcess = null;
                                 MessageBox.Show("Failed to play the compiled data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                toolStripStatusLabel.Text = "Autoplay failed";
+                                return;
                             }
+
+                            toolStripStatusLabel.Text = "Success to send the song to the player";
                         }
                     }));
                 }

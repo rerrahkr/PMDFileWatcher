@@ -42,16 +42,19 @@
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MMLGroupBox = new System.Windows.Forms.GroupBox();
-            this.referenceTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.referenceButton = new System.Windows.Forms.Button();
+            this.referenceTextBox = new System.Windows.Forms.TextBox();
             this.watchStartButton = new System.Windows.Forms.Button();
             this.watchStopButton = new System.Windows.Forms.Button();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.MMLGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -160,25 +163,40 @@
             this.MMLGroupBox.TabStop = false;
             this.MMLGroupBox.Text = "Target MML";
             // 
-            // referenceTextBox
+            // tableLayoutPanel1
             // 
-            this.referenceTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.referenceTextBox.Location = new System.Drawing.Point(3, 3);
-            this.referenceTextBox.Name = "referenceTextBox";
-            this.referenceTextBox.ReadOnly = true;
-            this.referenceTextBox.Size = new System.Drawing.Size(212, 19);
-            this.referenceTextBox.TabIndex = 2;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.referenceButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.referenceTextBox, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 15);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 34);
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // referenceButton
             // 
             this.referenceButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.referenceButton.Location = new System.Drawing.Point(221, 3);
+            this.referenceButton.Location = new System.Drawing.Point(221, 5);
             this.referenceButton.Name = "referenceButton";
             this.referenceButton.Size = new System.Drawing.Size(30, 23);
             this.referenceButton.TabIndex = 1;
             this.referenceButton.Text = "...";
             this.referenceButton.UseVisualStyleBackColor = true;
             this.referenceButton.Click += new System.EventHandler(this.referenceButton_Click);
+            // 
+            // referenceTextBox
+            // 
+            this.referenceTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.referenceTextBox.Location = new System.Drawing.Point(3, 7);
+            this.referenceTextBox.Name = "referenceTextBox";
+            this.referenceTextBox.ReadOnly = true;
+            this.referenceTextBox.Size = new System.Drawing.Size(212, 19);
+            this.referenceTextBox.TabIndex = 2;
             // 
             // watchStartButton
             // 
@@ -210,27 +228,29 @@
             this.fileSystemWatcher.SynchronizingObject = this;
             this.fileSystemWatcher.Changed += new System.IO.FileSystemEventHandler(this.fileSystemWatcher_Changed);
             // 
-            // tableLayoutPanel1
+            // statusStrip
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.referenceButton, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.referenceTextBox, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 15);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 34);
-            this.tableLayoutPanel1.TabIndex = 3;
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 119);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(284, 22);
+            this.statusStrip.TabIndex = 8;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel.Text = "Ready";
             // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 123);
+            this.ClientSize = new System.Drawing.Size(284, 141);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.watchStopButton);
             this.Controls.Add(this.watchStartButton);
             this.Controls.Add(this.MMLGroupBox);
@@ -244,9 +264,11 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.MMLGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,6 +294,8 @@
         private System.Windows.Forms.ToolStripMenuItem compileMenuItem;
         private System.Windows.Forms.ToolStripSeparator fileSeparateMenuItem2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
     }
 }
 
