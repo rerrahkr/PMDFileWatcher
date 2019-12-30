@@ -31,8 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.environmentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSeparateMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.environmentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileSeparateMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.endMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.watchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.watchStartMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,11 +47,11 @@
             this.watchStartButton = new System.Windows.Forms.Button();
             this.watchStopButton = new System.Windows.Forms.Button();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
-            this.fileSeparateMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.compileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip.SuspendLayout();
             this.MMLGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -76,22 +78,34 @@
             this.fileMenuItem.Size = new System.Drawing.Size(51, 20);
             this.fileMenuItem.Text = "File(&F)";
             // 
-            // environmentMenuItem
+            // compileMenuItem
             // 
-            this.environmentMenuItem.Name = "environmentMenuItem";
-            this.environmentMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.environmentMenuItem.Text = "Settings(&E)...";
-            this.environmentMenuItem.Click += new System.EventHandler(this.environmentMenuItem_Click);
+            this.compileMenuItem.Name = "compileMenuItem";
+            this.compileMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.compileMenuItem.Text = "Compile(&C)";
+            this.compileMenuItem.Click += new System.EventHandler(this.compileMenuItem_Click);
             // 
             // fileSeparateMenuItem1
             // 
             this.fileSeparateMenuItem1.Name = "fileSeparateMenuItem1";
-            this.fileSeparateMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.fileSeparateMenuItem1.Size = new System.Drawing.Size(136, 6);
+            // 
+            // environmentMenuItem
+            // 
+            this.environmentMenuItem.Name = "environmentMenuItem";
+            this.environmentMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.environmentMenuItem.Text = "Settings(&E)...";
+            this.environmentMenuItem.Click += new System.EventHandler(this.environmentMenuItem_Click);
+            // 
+            // fileSeparateMenuItem2
+            // 
+            this.fileSeparateMenuItem2.Name = "fileSeparateMenuItem2";
+            this.fileSeparateMenuItem2.Size = new System.Drawing.Size(136, 6);
             // 
             // endMenuItem
             // 
             this.endMenuItem.Name = "endMenuItem";
-            this.endMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.endMenuItem.Size = new System.Drawing.Size(139, 22);
             this.endMenuItem.Text = "Exit(&X)";
             this.endMenuItem.Click += new System.EventHandler(this.endMenuItem_Click);
             // 
@@ -107,7 +121,7 @@
             // watchStartMenuItem
             // 
             this.watchStartMenuItem.Name = "watchStartMenuItem";
-            this.watchStartMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.watchStartMenuItem.Size = new System.Drawing.Size(117, 22);
             this.watchStartMenuItem.Text = "Start(&M)";
             this.watchStartMenuItem.Click += new System.EventHandler(this.watchStartButton_Click);
             // 
@@ -115,7 +129,7 @@
             // 
             this.watchStopMenuItem.Enabled = false;
             this.watchStopMenuItem.Name = "watchStopMenuItem";
-            this.watchStopMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.watchStopMenuItem.Size = new System.Drawing.Size(117, 22);
             this.watchStopMenuItem.Text = "Stop(&S)";
             this.watchStopMenuItem.Click += new System.EventHandler(this.watchStopButton_Click);
             // 
@@ -130,14 +144,15 @@
             // versionMenuItem
             // 
             this.versionMenuItem.Name = "versionMenuItem";
-            this.versionMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.versionMenuItem.Size = new System.Drawing.Size(132, 22);
             this.versionMenuItem.Text = "About(&A)...";
             this.versionMenuItem.Click += new System.EventHandler(this.versionMenuItem_Click);
             // 
             // MMLGroupBox
             // 
-            this.MMLGroupBox.Controls.Add(this.referenceTextBox);
-            this.MMLGroupBox.Controls.Add(this.referenceButton);
+            this.MMLGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MMLGroupBox.Controls.Add(this.tableLayoutPanel1);
             this.MMLGroupBox.Location = new System.Drawing.Point(12, 27);
             this.MMLGroupBox.Name = "MMLGroupBox";
             this.MMLGroupBox.Size = new System.Drawing.Size(260, 52);
@@ -147,7 +162,8 @@
             // 
             // referenceTextBox
             // 
-            this.referenceTextBox.Location = new System.Drawing.Point(6, 20);
+            this.referenceTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.referenceTextBox.Location = new System.Drawing.Point(3, 3);
             this.referenceTextBox.Name = "referenceTextBox";
             this.referenceTextBox.ReadOnly = true;
             this.referenceTextBox.Size = new System.Drawing.Size(212, 19);
@@ -155,7 +171,8 @@
             // 
             // referenceButton
             // 
-            this.referenceButton.Location = new System.Drawing.Point(224, 18);
+            this.referenceButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.referenceButton.Location = new System.Drawing.Point(221, 3);
             this.referenceButton.Name = "referenceButton";
             this.referenceButton.Size = new System.Drawing.Size(30, 23);
             this.referenceButton.TabIndex = 1;
@@ -165,6 +182,7 @@
             // 
             // watchStartButton
             // 
+            this.watchStartButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.watchStartButton.Location = new System.Drawing.Point(55, 88);
             this.watchStartButton.Name = "watchStartButton";
             this.watchStartButton.Size = new System.Drawing.Size(75, 23);
@@ -175,6 +193,7 @@
             // 
             // watchStopButton
             // 
+            this.watchStopButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.watchStopButton.Enabled = false;
             this.watchStopButton.Location = new System.Drawing.Point(155, 88);
             this.watchStopButton.Name = "watchStopButton";
@@ -191,17 +210,20 @@
             this.fileSystemWatcher.SynchronizingObject = this;
             this.fileSystemWatcher.Changed += new System.IO.FileSystemEventHandler(this.fileSystemWatcher_Changed);
             // 
-            // fileSeparateMenuItem2
+            // tableLayoutPanel1
             // 
-            this.fileSeparateMenuItem2.Name = "fileSeparateMenuItem2";
-            this.fileSeparateMenuItem2.Size = new System.Drawing.Size(149, 6);
-            // 
-            // compileMenuItem
-            // 
-            this.compileMenuItem.Name = "compileMenuItem";
-            this.compileMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.compileMenuItem.Text = "Compile(&C)";
-            this.compileMenuItem.Click += new System.EventHandler(this.compileMenuItem_Click);
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.referenceButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.referenceTextBox, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 15);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 34);
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // MainForm
             // 
@@ -222,8 +244,9 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.MMLGroupBox.ResumeLayout(false);
-            this.MMLGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,6 +271,7 @@
         private System.IO.FileSystemWatcher fileSystemWatcher;
         private System.Windows.Forms.ToolStripMenuItem compileMenuItem;
         private System.Windows.Forms.ToolStripSeparator fileSeparateMenuItem2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

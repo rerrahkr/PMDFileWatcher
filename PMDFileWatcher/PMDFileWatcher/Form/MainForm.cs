@@ -13,7 +13,7 @@ namespace PMDFileWatcher.Form
 {
     public partial class MainForm : System.Windows.Forms.Form
     {
-        private EnvironmentForm ef;
+        private SettingsForm ef;
         private CompileResultForm crf;
 
         private DateTime prevChangeTime;
@@ -31,7 +31,7 @@ namespace PMDFileWatcher.Form
 
             settings = Settings.Load();
 
-            ef = new EnvironmentForm(settings);
+            ef = new SettingsForm(settings);
             ef.InitializeButtonClick += new InitializeButtonClickEventHandler(EnvironmentForm_InitializeButtonClick);
             crf = null;
 
