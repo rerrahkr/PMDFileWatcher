@@ -50,6 +50,7 @@
             this.playerReferenceButton = new System.Windows.Forms.Button();
             this.autoPlayCheckBox = new System.Windows.Forms.CheckBox();
             this.initializeButton = new System.Windows.Forms.Button();
+            this.soundNotifyCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.compileTabPage.SuspendLayout();
             this.msdosGroupBox.SuspendLayout();
@@ -62,7 +63,7 @@
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.saveButton.Location = new System.Drawing.Point(116, 229);
+            this.saveButton.Location = new System.Drawing.Point(116, 263);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 0;
@@ -74,7 +75,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(197, 229);
+            this.cancelButton.Location = new System.Drawing.Point(197, 263);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 1;
@@ -92,7 +93,7 @@
             this.tabControl.Location = new System.Drawing.Point(13, 13);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(259, 209);
+            this.tabControl.Size = new System.Drawing.Size(259, 243);
             this.tabControl.TabIndex = 2;
             // 
             // compileTabPage
@@ -102,7 +103,7 @@
             this.compileTabPage.Location = new System.Drawing.Point(4, 22);
             this.compileTabPage.Name = "compileTabPage";
             this.compileTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.compileTabPage.Size = new System.Drawing.Size(251, 183);
+            this.compileTabPage.Size = new System.Drawing.Size(251, 217);
             this.compileTabPage.TabIndex = 0;
             this.compileTabPage.Text = "Compile";
             this.compileTabPage.UseVisualStyleBackColor = true;
@@ -112,7 +113,7 @@
             this.msdosGroupBox.Controls.Add(this.msdosCheckBox);
             this.msdosGroupBox.Controls.Add(this.msdosReferenceTextBox);
             this.msdosGroupBox.Controls.Add(this.msdosReferenceButton);
-            this.msdosGroupBox.Location = new System.Drawing.Point(3, 122);
+            this.msdosGroupBox.Location = new System.Drawing.Point(3, 149);
             this.msdosGroupBox.Name = "msdosGroupBox";
             this.msdosGroupBox.Size = new System.Drawing.Size(245, 55);
             this.msdosGroupBox.TabIndex = 1;
@@ -155,6 +156,7 @@
             // 
             // mcGroupBox
             // 
+            this.mcGroupBox.Controls.Add(this.soundNotifyCheckBox);
             this.mcGroupBox.Controls.Add(this.compileResultCheckBox);
             this.mcGroupBox.Controls.Add(this.mcReferenceTextBox);
             this.mcGroupBox.Controls.Add(this.mcOptionTextBox);
@@ -163,7 +165,7 @@
             this.mcGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.mcGroupBox.Location = new System.Drawing.Point(3, 3);
             this.mcGroupBox.Name = "mcGroupBox";
-            this.mcGroupBox.Size = new System.Drawing.Size(245, 113);
+            this.mcGroupBox.Size = new System.Drawing.Size(245, 140);
             this.mcGroupBox.TabIndex = 0;
             this.mcGroupBox.TabStop = false;
             this.mcGroupBox.Text = "MML Compiler";
@@ -290,7 +292,7 @@
             // initializeButton
             // 
             this.initializeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.initializeButton.Location = new System.Drawing.Point(12, 229);
+            this.initializeButton.Location = new System.Drawing.Point(12, 263);
             this.initializeButton.Name = "initializeButton";
             this.initializeButton.Size = new System.Drawing.Size(75, 23);
             this.initializeButton.TabIndex = 3;
@@ -298,13 +300,25 @@
             this.initializeButton.UseVisualStyleBackColor = true;
             this.initializeButton.Click += new System.EventHandler(this.initializeButton_Click);
             // 
+            // soundNotifyCheckBox
+            // 
+            this.soundNotifyCheckBox.AutoSize = true;
+            this.soundNotifyCheckBox.Checked = true;
+            this.soundNotifyCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.soundNotifyCheckBox.Location = new System.Drawing.Point(6, 113);
+            this.soundNotifyCheckBox.Name = "soundNotifyCheckBox";
+            this.soundNotifyCheckBox.Size = new System.Drawing.Size(203, 16);
+            this.soundNotifyCheckBox.TabIndex = 6;
+            this.soundNotifyCheckBox.Text = "Notify compilation failure by sound";
+            this.soundNotifyCheckBox.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(284, 264);
+            this.ClientSize = new System.Drawing.Size(284, 298);
             this.Controls.Add(this.initializeButton);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.cancelButton);
@@ -352,5 +366,6 @@
         private System.Windows.Forms.TextBox playerReferenceTextBox;
         private System.Windows.Forms.CheckBox msdosCheckBox;
         private System.Windows.Forms.CheckBox compileResultCheckBox;
+        private System.Windows.Forms.CheckBox soundNotifyCheckBox;
     }
 }
