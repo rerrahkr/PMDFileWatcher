@@ -4,7 +4,7 @@ Copyright (C) 2017-2019 Rerrah
 
 [![GitHub release](https://img.shields.io/badge/release-v1.3.0-brightgreen.svg)](https://github.com/rerrahkr/PMDFileWatcher/releases)
 ![Platform: windows](https://img.shields.io/badge/platform-windows-lightgrey.svg)
-![.Net Framework: >=4.6.1](https://img.shields.io/badge/.NET-%3E%3D4.6.1-blue.svg)
+![.Net Framework: >=4.6](https://img.shields.io/badge/.NET-%3E%3D4.6-blue.svg)
 [![LICENSE](https://img.shields.io/github/license/rerrahkr/PMDFileWatcher.svg)](./LICENSE)
 
 [日本語](./README_ja.md)
