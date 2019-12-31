@@ -1,6 +1,5 @@
 # PMDFileWatcher
-PMDMML監視ツール  
-Copyright (C) 2017 Rerrah
+PMDMML監視ツール
 
 [English](./README.md)
 

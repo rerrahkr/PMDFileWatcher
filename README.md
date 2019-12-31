@@ -1,6 +1,5 @@
 # PMDFileWatcher
-Monitor, compile and play MML for PMD automatically  
-Copyright (C) 2017 Rerrah
+Monitor, compile and play MML for PMD automatically
 
 [日本語](./README_ja.md)
 
