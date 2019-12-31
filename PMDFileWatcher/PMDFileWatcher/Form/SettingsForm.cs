@@ -39,6 +39,7 @@ namespace PMDFileWatcher.Form
             mcReferenceTextBox.Text = settings.MCPath;
             mcOptionTextBox.Text = settings.MCOption;
             compileResultCheckBox.Checked = settings.ResultFormEnable;
+            soundNotifyCheckBox.Checked = settings.SoundNotification;
             autoPlayCheckBox.Checked = settings.AutoPlay;
             playerReferenceTextBox.Text = settings.PlayerPath;
         }
@@ -112,6 +113,7 @@ namespace PMDFileWatcher.Form
             settings.MCPath = mcReferenceTextBox.Text;
             settings.MCOption = mcOptionTextBox.Text;
             settings.ResultFormEnable = compileResultCheckBox.Checked;
+            settings.SoundNotification = soundNotifyCheckBox.Checked;
             settings.AutoPlay = autoPlayCheckBox.Checked;
             settings.PlayerPath = playerReferenceTextBox.Text;
 

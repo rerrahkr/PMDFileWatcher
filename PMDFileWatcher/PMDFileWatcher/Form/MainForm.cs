@@ -358,7 +358,10 @@ namespace PMDFileWatcher.Form
                         else
                         {
                             toolStripStatusLabel.Text = "Compilation failed";
-
+                            if (settings.SoundNotification)
+                            {
+                                System.Media.SystemSounds.Hand.Play();
+                            }
                         }
 
                         if (cr.Success && settings.AutoPlay)
