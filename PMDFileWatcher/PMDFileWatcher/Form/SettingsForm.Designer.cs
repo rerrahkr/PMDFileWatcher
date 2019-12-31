@@ -38,7 +38,9 @@
             this.msdosReferenceTextBox = new System.Windows.Forms.TextBox();
             this.msdosReferenceButton = new System.Windows.Forms.Button();
             this.mcGroupBox = new System.Windows.Forms.GroupBox();
-            this.compileResultCheckBox = new System.Windows.Forms.CheckBox();
+            this.resultFormComboBox = new System.Windows.Forms.ComboBox();
+            this.compileResultLabel = new System.Windows.Forms.Label();
+            this.soundNotifyCheckBox = new System.Windows.Forms.CheckBox();
             this.mcReferenceTextBox = new System.Windows.Forms.TextBox();
             this.mcOptionTextBox = new System.Windows.Forms.TextBox();
             this.mcOptionLabel = new System.Windows.Forms.Label();
@@ -50,7 +52,6 @@
             this.playerReferenceButton = new System.Windows.Forms.Button();
             this.autoPlayCheckBox = new System.Windows.Forms.CheckBox();
             this.initializeButton = new System.Windows.Forms.Button();
-            this.soundNotifyCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.compileTabPage.SuspendLayout();
             this.msdosGroupBox.SuspendLayout();
@@ -66,7 +67,7 @@
             this.saveButton.Location = new System.Drawing.Point(116, 263);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 0;
+            this.saveButton.TabIndex = 13;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -78,7 +79,7 @@
             this.cancelButton.Location = new System.Drawing.Point(197, 263);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
+            this.cancelButton.TabIndex = 14;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -94,7 +95,7 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(259, 243);
-            this.tabControl.TabIndex = 2;
+            this.tabControl.TabIndex = 0;
             // 
             // compileTabPage
             // 
@@ -113,7 +114,7 @@
             this.msdosGroupBox.Controls.Add(this.msdosCheckBox);
             this.msdosGroupBox.Controls.Add(this.msdosReferenceTextBox);
             this.msdosGroupBox.Controls.Add(this.msdosReferenceButton);
-            this.msdosGroupBox.Location = new System.Drawing.Point(3, 149);
+            this.msdosGroupBox.Location = new System.Drawing.Point(3, 153);
             this.msdosGroupBox.Name = "msdosGroupBox";
             this.msdosGroupBox.Size = new System.Drawing.Size(245, 55);
             this.msdosGroupBox.TabIndex = 1;
@@ -126,7 +127,7 @@
             this.msdosCheckBox.Location = new System.Drawing.Point(8, 0);
             this.msdosCheckBox.Name = "msdosCheckBox";
             this.msdosCheckBox.Size = new System.Drawing.Size(105, 16);
-            this.msdosCheckBox.TabIndex = 3;
+            this.msdosCheckBox.TabIndex = 6;
             this.msdosCheckBox.Text = "MS-DOS Player";
             this.msdosCheckBox.UseVisualStyleBackColor = true;
             this.msdosCheckBox.CheckedChanged += new System.EventHandler(this.msdosCheckBox_CheckedChanged);
@@ -140,7 +141,7 @@
             this.msdosReferenceTextBox.Name = "msdosReferenceTextBox";
             this.msdosReferenceTextBox.ReadOnly = true;
             this.msdosReferenceTextBox.Size = new System.Drawing.Size(191, 19);
-            this.msdosReferenceTextBox.TabIndex = 2;
+            this.msdosReferenceTextBox.TabIndex = 7;
             // 
             // msdosReferenceButton
             // 
@@ -149,15 +150,16 @@
             this.msdosReferenceButton.Location = new System.Drawing.Point(203, 20);
             this.msdosReferenceButton.Name = "msdosReferenceButton";
             this.msdosReferenceButton.Size = new System.Drawing.Size(30, 23);
-            this.msdosReferenceButton.TabIndex = 1;
+            this.msdosReferenceButton.TabIndex = 8;
             this.msdosReferenceButton.Text = "...";
             this.msdosReferenceButton.UseVisualStyleBackColor = true;
             this.msdosReferenceButton.Click += new System.EventHandler(this.msdosReferenceButton_Click);
             // 
             // mcGroupBox
             // 
+            this.mcGroupBox.Controls.Add(this.resultFormComboBox);
+            this.mcGroupBox.Controls.Add(this.compileResultLabel);
             this.mcGroupBox.Controls.Add(this.soundNotifyCheckBox);
-            this.mcGroupBox.Controls.Add(this.compileResultCheckBox);
             this.mcGroupBox.Controls.Add(this.mcReferenceTextBox);
             this.mcGroupBox.Controls.Add(this.mcOptionTextBox);
             this.mcGroupBox.Controls.Add(this.mcOptionLabel);
@@ -165,46 +167,70 @@
             this.mcGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.mcGroupBox.Location = new System.Drawing.Point(3, 3);
             this.mcGroupBox.Name = "mcGroupBox";
-            this.mcGroupBox.Size = new System.Drawing.Size(245, 140);
+            this.mcGroupBox.Size = new System.Drawing.Size(245, 144);
             this.mcGroupBox.TabIndex = 0;
             this.mcGroupBox.TabStop = false;
             this.mcGroupBox.Text = "MML Compiler";
             // 
-            // compileResultCheckBox
+            // resultFormComboBox
             // 
-            this.compileResultCheckBox.AutoSize = true;
-            this.compileResultCheckBox.Checked = true;
-            this.compileResultCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.compileResultCheckBox.Location = new System.Drawing.Point(6, 91);
-            this.compileResultCheckBox.Name = "compileResultCheckBox";
-            this.compileResultCheckBox.Size = new System.Drawing.Size(146, 16);
-            this.compileResultCheckBox.TabIndex = 5;
-            this.compileResultCheckBox.Text = "Show compilation result";
-            this.compileResultCheckBox.UseVisualStyleBackColor = true;
+            this.resultFormComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resultFormComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resultFormComboBox.FormattingEnabled = true;
+            this.resultFormComboBox.Items.AddRange(new object[] {
+            "Display",
+            "Display when compilation failed",
+            "Hide"});
+            this.resultFormComboBox.Location = new System.Drawing.Point(6, 94);
+            this.resultFormComboBox.Name = "resultFormComboBox";
+            this.resultFormComboBox.Size = new System.Drawing.Size(236, 20);
+            this.resultFormComboBox.TabIndex = 4;
+            // 
+            // compileResultLabel
+            // 
+            this.compileResultLabel.AutoSize = true;
+            this.compileResultLabel.Location = new System.Drawing.Point(6, 79);
+            this.compileResultLabel.Name = "compileResultLabel";
+            this.compileResultLabel.Size = new System.Drawing.Size(100, 12);
+            this.compileResultLabel.TabIndex = 7;
+            this.compileResultLabel.Text = "Compilation result:";
+            // 
+            // soundNotifyCheckBox
+            // 
+            this.soundNotifyCheckBox.AutoSize = true;
+            this.soundNotifyCheckBox.Checked = true;
+            this.soundNotifyCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.soundNotifyCheckBox.Location = new System.Drawing.Point(6, 120);
+            this.soundNotifyCheckBox.Name = "soundNotifyCheckBox";
+            this.soundNotifyCheckBox.Size = new System.Drawing.Size(203, 16);
+            this.soundNotifyCheckBox.TabIndex = 5;
+            this.soundNotifyCheckBox.Text = "Notify compilation failure by sound";
+            this.soundNotifyCheckBox.UseVisualStyleBackColor = true;
             // 
             // mcReferenceTextBox
             // 
             this.mcReferenceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mcReferenceTextBox.Location = new System.Drawing.Point(6, 20);
+            this.mcReferenceTextBox.Location = new System.Drawing.Point(6, 18);
             this.mcReferenceTextBox.Name = "mcReferenceTextBox";
             this.mcReferenceTextBox.ReadOnly = true;
-            this.mcReferenceTextBox.Size = new System.Drawing.Size(191, 19);
-            this.mcReferenceTextBox.TabIndex = 4;
+            this.mcReferenceTextBox.Size = new System.Drawing.Size(197, 19);
+            this.mcReferenceTextBox.TabIndex = 1;
             // 
             // mcOptionTextBox
             // 
             this.mcOptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mcOptionTextBox.Location = new System.Drawing.Point(6, 64);
+            this.mcOptionTextBox.Location = new System.Drawing.Point(6, 57);
             this.mcOptionTextBox.Name = "mcOptionTextBox";
-            this.mcOptionTextBox.Size = new System.Drawing.Size(227, 19);
+            this.mcOptionTextBox.Size = new System.Drawing.Size(233, 19);
             this.mcOptionTextBox.TabIndex = 3;
             // 
             // mcOptionLabel
             // 
             this.mcOptionLabel.AutoSize = true;
-            this.mcOptionLabel.Location = new System.Drawing.Point(6, 49);
+            this.mcOptionLabel.Location = new System.Drawing.Point(6, 42);
             this.mcOptionLabel.Name = "mcOptionLabel";
             this.mcOptionLabel.Size = new System.Drawing.Size(46, 12);
             this.mcOptionLabel.TabIndex = 2;
@@ -213,10 +239,10 @@
             // mcReferenceButton
             // 
             this.mcReferenceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mcReferenceButton.Location = new System.Drawing.Point(203, 18);
+            this.mcReferenceButton.Location = new System.Drawing.Point(209, 16);
             this.mcReferenceButton.Name = "mcReferenceButton";
             this.mcReferenceButton.Size = new System.Drawing.Size(30, 23);
-            this.mcReferenceButton.TabIndex = 1;
+            this.mcReferenceButton.TabIndex = 2;
             this.mcReferenceButton.Text = "...";
             this.mcReferenceButton.UseVisualStyleBackColor = true;
             this.mcReferenceButton.Click += new System.EventHandler(this.mcReferenceButton_Click);
@@ -227,7 +253,7 @@
             this.playTabPage.Location = new System.Drawing.Point(4, 22);
             this.playTabPage.Name = "playTabPage";
             this.playTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.playTabPage.Size = new System.Drawing.Size(251, 183);
+            this.playTabPage.Size = new System.Drawing.Size(251, 217);
             this.playTabPage.TabIndex = 1;
             this.playTabPage.Text = "Play";
             this.playTabPage.UseVisualStyleBackColor = true;
@@ -254,7 +280,7 @@
             this.playerReferenceTextBox.Name = "playerReferenceTextBox";
             this.playerReferenceTextBox.ReadOnly = true;
             this.playerReferenceTextBox.Size = new System.Drawing.Size(191, 19);
-            this.playerReferenceTextBox.TabIndex = 5;
+            this.playerReferenceTextBox.TabIndex = 10;
             // 
             // playerCaptionLabel
             // 
@@ -271,7 +297,7 @@
             this.playerReferenceButton.Location = new System.Drawing.Point(203, 33);
             this.playerReferenceButton.Name = "playerReferenceButton";
             this.playerReferenceButton.Size = new System.Drawing.Size(30, 23);
-            this.playerReferenceButton.TabIndex = 3;
+            this.playerReferenceButton.TabIndex = 11;
             this.playerReferenceButton.Text = "...";
             this.playerReferenceButton.UseVisualStyleBackColor = true;
             this.playerReferenceButton.Click += new System.EventHandler(this.playerReferenceButton_Click);
@@ -284,7 +310,7 @@
             this.autoPlayCheckBox.Location = new System.Drawing.Point(8, 0);
             this.autoPlayCheckBox.Name = "autoPlayCheckBox";
             this.autoPlayCheckBox.Size = new System.Drawing.Size(69, 16);
-            this.autoPlayCheckBox.TabIndex = 0;
+            this.autoPlayCheckBox.TabIndex = 9;
             this.autoPlayCheckBox.Text = "Autoplay";
             this.autoPlayCheckBox.UseVisualStyleBackColor = true;
             this.autoPlayCheckBox.CheckedChanged += new System.EventHandler(this.autoPlayCheckBox_CheckedChanged);
@@ -295,22 +321,10 @@
             this.initializeButton.Location = new System.Drawing.Point(12, 263);
             this.initializeButton.Name = "initializeButton";
             this.initializeButton.Size = new System.Drawing.Size(75, 23);
-            this.initializeButton.TabIndex = 3;
+            this.initializeButton.TabIndex = 12;
             this.initializeButton.Text = "Default";
             this.initializeButton.UseVisualStyleBackColor = true;
             this.initializeButton.Click += new System.EventHandler(this.initializeButton_Click);
-            // 
-            // soundNotifyCheckBox
-            // 
-            this.soundNotifyCheckBox.AutoSize = true;
-            this.soundNotifyCheckBox.Checked = true;
-            this.soundNotifyCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.soundNotifyCheckBox.Location = new System.Drawing.Point(6, 113);
-            this.soundNotifyCheckBox.Name = "soundNotifyCheckBox";
-            this.soundNotifyCheckBox.Size = new System.Drawing.Size(203, 16);
-            this.soundNotifyCheckBox.TabIndex = 6;
-            this.soundNotifyCheckBox.Text = "Notify compilation failure by sound";
-            this.soundNotifyCheckBox.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -365,7 +379,8 @@
         private System.Windows.Forms.TextBox mcReferenceTextBox;
         private System.Windows.Forms.TextBox playerReferenceTextBox;
         private System.Windows.Forms.CheckBox msdosCheckBox;
-        private System.Windows.Forms.CheckBox compileResultCheckBox;
         private System.Windows.Forms.CheckBox soundNotifyCheckBox;
+        private System.Windows.Forms.ComboBox resultFormComboBox;
+        private System.Windows.Forms.Label compileResultLabel;
     }
 }

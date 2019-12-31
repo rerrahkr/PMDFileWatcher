@@ -332,23 +332,52 @@ namespace PMDFileWatcher.Form
                     {
                         CompileResult cr = new CompileResult(compileResultTextList);
 
-                        if (settings.ResultFormEnable)
+                        switch (settings.ResultForm)
                         {
-                            if (crf == null)    // Closed compilation result form
-                            {
-                                crf = new CompileResultForm();
-                                crf.FormClosed += (sender2, e2) => { crf = null; };
-                                crf.SetResult(cr);
-                                crf.Show();
-                            }
-                            else
-                            {
-                                crf.SetResult(cr);
-                            }
-                        }
-                        else if (crf != null)
-                        {
-                            crf.Close();
+                            case 0: // Display
+                                if (crf == null)    // Closed compilation result form
+                                {
+                                    crf = new CompileResultForm();
+                                    crf.FormClosed += (sender2, e2) => { crf = null; };
+                                    crf.SetResult(cr);
+                                    crf.Show();
+                                }
+                                else
+                                {
+                                    crf.SetResult(cr);
+                                }
+                                break;
+                            case 1: // Display when compilation failed
+                                if (cr.Success)
+                                {
+                                    if (crf != null)
+                                    {
+                                        crf.Close();
+                                    }
+                                }
+                                else
+                                {
+                                    if (crf == null)    // Closed compilation result form
+                                    {
+                                        crf = new CompileResultForm();
+                                        crf.FormClosed += (sender2, e2) => { crf = null; };
+                                        crf.SetResult(cr);
+                                        crf.Show();
+                                    }
+                                    else
+                                    {
+                                        crf.SetResult(cr);
+                                    }
+                                }
+                                break;
+                            case 2: // Hide
+                                if (crf != null)
+                                {
+                                    crf.Close();
+                                }
+                                break;
+                            default:
+                                break;
                         }
 
                         if (cr.Success)

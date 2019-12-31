@@ -38,7 +38,7 @@ namespace PMDFileWatcher.Form
             msdosReferenceTextBox.Text = settings.MSDOSPath;
             mcReferenceTextBox.Text = settings.MCPath;
             mcOptionTextBox.Text = settings.MCOption;
-            compileResultCheckBox.Checked = settings.ResultFormEnable;
+            resultFormComboBox.SelectedIndex = settings.ResultForm;
             soundNotifyCheckBox.Checked = settings.SoundNotification;
             autoPlayCheckBox.Checked = settings.AutoPlay;
             playerReferenceTextBox.Text = settings.PlayerPath;
@@ -112,7 +112,7 @@ namespace PMDFileWatcher.Form
             settings.MSDOSPath = msdosReferenceTextBox.Text;
             settings.MCPath = mcReferenceTextBox.Text;
             settings.MCOption = mcOptionTextBox.Text;
-            settings.ResultFormEnable = compileResultCheckBox.Checked;
+            settings.ResultForm = resultFormComboBox.SelectedIndex;
             settings.SoundNotification = soundNotifyCheckBox.Checked;
             settings.AutoPlay = autoPlayCheckBox.Checked;
             settings.PlayerPath = playerReferenceTextBox.Text;

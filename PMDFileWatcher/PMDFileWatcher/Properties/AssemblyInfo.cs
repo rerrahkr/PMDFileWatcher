@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RerrahSoft")]
 [assembly: AssemblyProduct("PMDFileWatcher")]
-[assembly: AssemblyCopyright("Copyright ©  2017 Rerrah")]
+[assembly: AssemblyCopyright("Copyright © 2017-2019 Rerrah")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.0")]
-[assembly: AssemblyFileVersion("1.2.0")]
+[assembly: AssemblyVersion("1.3.0")]
+[assembly: AssemblyFileVersion("1.3.0")]
 [assembly: NeutralResourcesLanguage("")]
 
