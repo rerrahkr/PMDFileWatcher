@@ -61,7 +61,7 @@ namespace PMDFileWatcher.Form
 
         private void msdosReferenceButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            var ofd = new OpenFileDialog();
             ofd.Title = "Select MS-DOS Player";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -71,7 +71,7 @@ namespace PMDFileWatcher.Form
 
         private void mcReferenceButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            var ofd = new OpenFileDialog();
             ofd.Title = "Select MC";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -98,7 +98,7 @@ namespace PMDFileWatcher.Form
 
         private void playerReferenceButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            var ofd = new OpenFileDialog();
             ofd.Title = "Select Player";
             if (ofd.ShowDialog() == DialogResult.OK)
             {

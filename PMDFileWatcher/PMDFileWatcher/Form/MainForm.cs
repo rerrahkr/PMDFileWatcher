@@ -112,13 +112,13 @@ namespace PMDFileWatcher.Form
 
         private void versionMenuItem_Click(object sender, EventArgs e)
         {
-            VersionForm vf = new VersionForm();
+            var vf = new VersionForm();
             vf.Show();
         }
 
         private void referenceButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            var ofd = new OpenFileDialog();
             ofd.Title = "Select MML";
             ofd.Filter = "MML File (*.mml)|*.mml|All File (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -330,7 +330,7 @@ namespace PMDFileWatcher.Form
 
                     BeginInvoke((Action)(() =>
                     {
-                        CompileResult cr = new CompileResult(compileResultTextList);
+                        var cr = new CompileResult(compileResultTextList);
 
                         switch (settings.ResultForm)
                         {
@@ -410,7 +410,7 @@ namespace PMDFileWatcher.Form
 
                                 playProcess = new System.Diagnostics.Process();
                                 playProcess.StartInfo.FileName = settings.PlayerPath;
-                                playProcess.StartInfo.Arguments = Path.Combine(Path.GetDirectoryName(settings.MMLPath), CompiledFile.getFileName(settings.MMLPath));
+                                playProcess.StartInfo.Arguments = Path.Combine(Path.GetDirectoryName(settings.MMLPath), CompiledFile.GetFileName(settings.MMLPath));
                                 playProcess.StartInfo.WorkingDirectory = Path.GetDirectoryName(settings.MMLPath);
 
                                 playProcess.Start();

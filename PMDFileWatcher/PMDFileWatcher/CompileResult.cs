@@ -8,24 +8,17 @@ namespace PMDFileWatcher
 {
     public class CompileResult
     {
-        private List<string> textList;
+        private readonly List<string> textList;
 
-        private bool _success;
-        public bool Success
-        {
-            get
-            {
-                return _success;
-            }
-        }
+        public bool Success { get; }
 
         public CompileResult(List<string> list)
         {
             textList = list;
-            _success = isSuccess();
+            Success = IsSuccess();
         }
 
-        private bool isSuccess()
+        private bool IsSuccess()
         {
             try
             {
@@ -54,7 +47,7 @@ namespace PMDFileWatcher
             {
                 try
                 {
-                    StringBuilder sb = new StringBuilder();
+                    var sb = new StringBuilder();
                     foreach (string line in textList)
                     {
                         sb.Append(line);
