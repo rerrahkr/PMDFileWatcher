@@ -10,13 +10,13 @@ namespace PMDFileWatcher
 {
     public static class CompiledFile
     {
-        public static string getFileName(string mmlPath)
+        public static string GetFileName(string mmlPath)
         {
             try
             {
-                using (StreamReader sr = new StreamReader(mmlPath, Encoding.GetEncoding("shift_jis")))
+                using (var sr = new StreamReader(mmlPath, Encoding.GetEncoding("shift_jis")))
                 {
-                    Regex regex = new Regex("#Filename\\s+(?<name>.+$)", RegexOptions.IgnoreCase);
+                    var regex = new Regex("#Filename\\s+(?<name>.+$)", RegexOptions.IgnoreCase);
                     while (sr.Peek() > -1)
                     {
                         Match match = regex.Match(sr.ReadLine());

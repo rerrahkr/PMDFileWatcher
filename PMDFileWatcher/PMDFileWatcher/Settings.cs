@@ -10,15 +10,15 @@ namespace PMDFileWatcher
     [Serializable]
     public class Settings
     {
-        public string MMLPath { set; get; } = String.Empty;
+        public string MMLPath { set; get; } = string.Empty;
         public bool MSDOSEnable { set; get; } = false;
-        public string MSDOSPath { set; get; } = String.Empty;
-        public string MCPath { set; get; } = String.Empty;
-        public string MCOption { set; get; } = String.Empty;
+        public string MSDOSPath { set; get; } = string.Empty;
+        public string MCPath { set; get; } = string.Empty;
+        public string MCOption { set; get; } = string.Empty;
         public int ResultForm { set; get; } = 0;
         public bool SoundNotification { set; get; } = true;
         public bool AutoPlay { set; get; } = true;
-        public string PlayerPath { set; get; } = String.Empty;
+        public string PlayerPath { set; get; } = string.Empty;
 
         public static Settings Load()
         {
