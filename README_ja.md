@@ -9,6 +9,8 @@ Copyright (C) 2017-2019 Rerrah
 
 [English](./README.md)
 
+> :warning: このプロジェクトはもう管理されていません。
+
 ## 概要
 PMDFileWatcherはPMD用MMLの更新を監視し、自動でMMLコンパイラを実行してFMPMDなどのプレーヤに再生させるソフトです。  
 コンパイル・再生に利用するプログラムは「Settings」で指定できます。

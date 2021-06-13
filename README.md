@@ -9,6 +9,8 @@ Copyright (C) 2017-2019 Rerrah
 
 [日本語](./README_ja.md)
 
+> :warning: This project is no longer maintained.
+
 ## Overview
 PMDFileWatcher is an application that monitors the update of MML for PMD, automatically compiles the MML and play it on players such as FMPMD.  
 The program to be used for compilation and playback can be specified in "Settings".
